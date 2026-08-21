@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { ArrowLeft, GitBranch } from 'lucide-react';
 
 import { PROJECT_BRANDS, PROJECT_CATEGORIES, type Project } from '@/entities/project';
+import { ProjectGallery } from '@/features/preview-project-image';
 import { Badge } from '@/shared/ui/badge';
 import { Button } from '@/shared/ui/button';
 import { Card, CardContent } from '@/shared/ui/card';
@@ -64,6 +65,13 @@ export function ProjectDetailPage({ project }: { project: Project }) {
           {project.background}
         </p>
       </section>
+
+      {project.gallery?.length ? (
+        <section className="mt-12 flex flex-col gap-4">
+          <h2 className="text-lg font-semibold">화면</h2>
+          <ProjectGallery images={project.gallery} />
+        </section>
+      ) : null}
 
       <section className="mt-12 flex flex-col gap-6">
         <h2 className="text-lg font-semibold">구현</h2>

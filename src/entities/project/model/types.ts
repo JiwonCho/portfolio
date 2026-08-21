@@ -32,6 +32,17 @@ export interface ProjectMetric {
   label: string;
 }
 
+export interface ProjectImage {
+  /** public 기준 절대 경로 — 예: /projects/usj-pass-domain/01-pass-filter.webp */
+  src: string;
+  /** 스크린리더용 설명. 어떤 화면인지 문장으로 적는다 */
+  alt: string;
+  /** 이미지 아래 캡션 — 무엇을 보여 주는 장면인지 */
+  caption?: string;
+  /** wide = PC 화면(16:9), tall = 모바일 화면(9:16) */
+  ratio?: 'wide' | 'tall';
+}
+
 export interface Project {
   slug: string;
   /** Deep Dive 순번 */
@@ -51,6 +62,8 @@ export interface Project {
   implementation: ProjectSection[];
   /** 규모 — 집계값 */
   metrics: ProjectMetric[];
-  /** TODO(자료 필요): 대표 썸네일 (16:9) — public/projects/{slug}.png */
+  /** 카드 대표 썸네일 (16:9). 없으면 카드가 텍스트 전용 레이아웃으로 렌더된다 */
   thumbnail?: string;
+  /** 상세 페이지 갤러리. 없으면 갤러리 섹션 자체가 렌더되지 않는다 */
+  gallery?: ProjectImage[];
 }

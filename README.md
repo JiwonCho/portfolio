@@ -43,7 +43,7 @@ src/
   widgets/          # 여러 feature/entity 를 조합한 화면 블록
     header/  hero/  about/  projects/  experience/  contact/  footer/
   features/         # 사용자가 수행하는 동작
-    toggle-theme/  filter-projects/  copy-email/  send-message/
+    toggle-theme/  filter-projects/  copy-email/  send-message/  preview-project-image/
   entities/         # 도메인 데이터의 타입·데이터·표현
     profile/  skill/  experience/  project/
   shared/           # 도메인 지식 없는 범용 UI·유틸
@@ -89,6 +89,7 @@ export const { selectTheme } = injectedThemeSlice.selectors;
 | 경력 타임라인 · 서비스 범위 | `src/entities/experience/model/experience.data.ts` |
 | 퍼블리셔 경력 (2010–2021) | `src/entities/experience/model/experience.data.ts` 의 `careerHistory` |
 | 프로젝트 16건 | `src/entities/project/model/projects.data.ts` |
+| 프로젝트 화면 이미지 | `public/projects/{slug}/` + 위 파일의 `thumbnail` / `gallery` (규격은 `public/projects/README.md`) |
 | 사이트 메타 · 외부 링크 | `src/shared/config/site.ts` |
 | 테마 색 | `app/globals.css` 의 `:root` / `.dark` |
 

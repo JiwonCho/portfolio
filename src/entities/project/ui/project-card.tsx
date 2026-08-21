@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowUpRight, GitBranch } from 'lucide-react';
@@ -30,7 +31,19 @@ export function ProjectCard({ project, className }: { project: Project; classNam
       exit={{ opacity: 0, y: -12, transition: { duration: 0.2 } }}
       className={cn('h-full', className)}
     >
-      <Card className="group relative h-full gap-4 transition-colors hover:border-primary/40">
+      <Card className="group relative h-full gap-4 overflow-hidden transition-colors hover:border-primary/40">
+        {project.thumbnail ? (
+          <div className="relative -mt-6 aspect-video w-full overflow-hidden border-b border-border bg-muted">
+            <Image
+              src={project.thumbnail}
+              alt={`${project.title} 화면`}
+              fill
+              sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+              className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+            />
+          </div>
+        ) : null}
+
         <CardHeader className="gap-2">
           <div className="flex items-center gap-2">
             <span className="font-mono text-xs text-muted-foreground">{project.no}</span>

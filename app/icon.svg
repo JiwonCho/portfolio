@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- 인디고-퍼플 개발자 톤 그라데이션 -->
+    <linearGradient id="jwGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366F1" />
+      <stop offset="100%" stop-color="#A855F7" />
+    </linearGradient>
+  </defs>
+
+  <!-- 둥근 모서리 다크 배경 -->
+  <rect width="512" height="512" rx="128" fill="#0F172A" />
+
+  <!-- JW 굵은 결합 타이포그래피 -->
+  <path 
+    d="M 140 160 L 200 160 L 200 280 C 200 320 180 340 140 340 L 120 340 M 240 160 L 280 340 L 320 230 L 360 340 L 400 160" 
+    fill="none" 
+    stroke="url(#jwGradient)" 
+    stroke-width="48" 
+    stroke-linecap="round" 
+    stroke-linejoin="round" 
+  />
+</svg>

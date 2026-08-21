@@ -51,8 +51,6 @@ export interface Project {
   implementation: ProjectSection[];
   /** 규모 — 집계값 */
   metrics: ProjectMetric[];
-  /** 레포에 실재하는 파일 경로 */
-  paths: string[];
   /** TODO(자료 필요): 대표 썸네일 (16:9) — public/projects/{slug}.png */
   thumbnail?: string;
 }

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowLeft, FileCode, GitBranch } from 'lucide-react';
+import { ArrowLeft, GitBranch } from 'lucide-react';
 
 import { PROJECT_BRANDS, PROJECT_CATEGORIES, type Project } from '@/entities/project';
 import { Badge } from '@/shared/ui/badge';
@@ -100,23 +100,9 @@ export function ProjectDetailPage({ project }: { project: Project }) {
             </Card>
           ))}
         </dl>
-      </section>
-
-      <section className="mt-12 flex flex-col gap-4">
-        <h2 className="inline-flex items-center gap-2 text-lg font-semibold">
-          <FileCode className="size-4 text-muted-foreground" aria-hidden />
-          주요 파일 경로
-        </h2>
-        <ul className="flex flex-col gap-2 rounded-lg border border-border bg-muted/40 p-4">
-          {project.paths.map((path) => (
-            <li key={path} className="break-all font-mono text-xs leading-relaxed text-muted-foreground">
-              {path}
-            </li>
-          ))}
-        </ul>
-        <p className="text-xs text-muted-foreground">
-          레포에 실재하는 경로입니다. 파일 수·줄 수·커밋 수는 파일명·경로 패턴으로 센 집계값이라
-          해당 기능만의 순수 코드량은 아니며, 커밋 수에는 머지 커밋과 공동 작업분이 섞여 있습니다.
+        <p className="text-xs leading-relaxed text-muted-foreground">
+          파일 수·줄 수·커밋 수는 파일명·경로 패턴으로 센 레포 집계값이라 해당 기능만의 순수
+          코드량은 아니며, 커밋 수에는 머지 커밋과 공동 작업분이 섞여 있습니다.
         </p>
       </section>
 

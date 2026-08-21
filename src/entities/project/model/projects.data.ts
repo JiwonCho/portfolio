@@ -53,13 +53,6 @@ export const projects: Project[] = [
       { value: '5개 앱', label: '패키지 · 투티 · 호텔 · 항공 · 공통' },
       { value: '151건', label: '본인 커밋 (2024-07 ~ 2026-08)' },
     ],
-    paths: [
-      'src/app/pc/_components/PackagePcMainFaqSC/ (SC + *.fetch.ts + BLC/*.action.ts)',
-      'src/app/pc/detail/[representProductCode]/[productCode]/_components/PackagePcProductDetailBLC/',
-      'src/lit-component/ (package-pc-quick-search · keyword-suggest-list · departure-date-calendar-filter)',
-      'rollup.config.mjs · prepare_wc.sh · src/stories/',
-      'packages/@privia/ui/components/{pc,mo}/',
-    ],
   },
   {
     slug: 'usj-pass-domain',
@@ -100,12 +93,6 @@ export const projects: Project[] = [
       { value: '31,700줄', label: '코드 (약)' },
       { value: '500건+', label: '관련 커밋' },
       { value: '4종', label: 'Jest 테스트 (옵션 slice · 재고 알림 · 옵션 리셋)' },
-    ],
-    paths: [
-      'app/(mo)/(new)/product/[productId]/_components/TntMoUsjOptionSelectPage/',
-      '…/TntMoUsjProductDetailModal/ · …/TntMoUsjProductDetailPanel/',
-      'app/lib/components/usj/TntUsjPassFilterForm.tsx',
-      'app/lib/utils/usjFilterScoringUtils.ts · app/lib/constants/usjConstants.ts',
     ],
   },
   {
@@ -148,12 +135,6 @@ export const projects: Project[] = [
       { value: '123건', label: '커밋' },
       { value: '528줄', label: '요구사항·API 레퍼런스 문서 (+ 19단계 구현 로그)' },
     ],
-    paths: [
-      'docs/tourvis-group-product-front.md · docs/tourvis-group-product-api-reference.md',
-      'app/pc/(new)/product/[productId]/_components/GroupProduct/',
-      'app/(mo)/(new)/product/[productId]/_components/GroupProduct/GroupMoProductOptionFlowLayer.tsx',
-      'app/lib/redux/slices/groupProductOptionBookingSlice/ · app/lib/redux/optionFlow/',
-    ],
   },
   {
     slug: 'japan-bus-tour-soldout-alternative',
@@ -190,12 +171,6 @@ export const projects: Project[] = [
       { value: '14개', label: 'PC/MO 캘린더·옵션 모달·추천 카드·캐시 파일' },
       { value: '307줄', label: '직접 작성한 계획서' },
     ],
-    paths: [
-      'docs/japan-bus-tour-soldout-alternative-calendar-prd.md',
-      'app/pc/(new)/product/[productId]/_lib/japanBusTourSoldoutAlternativeSheet.ts',
-      '…/_lib/japanBusTourAlternativeRecommendationsCache.ts',
-      '…/hooks/useJapanBusTourAlternativeRecommendations.ts',
-    ],
   },
   {
     slug: 'refund-policy-v2',
@@ -231,12 +206,6 @@ export const projects: Project[] = [
       { value: '2종', label: '변환 유틸' },
       { value: '13개', label: '동시 수정한 화면 파일' },
       { value: '5개 화면', label: '상품상세 · 예약 · 결제 · 주문 · 취소' },
-    ],
-    paths: [
-      'app/lib/utils/refund-v2-utils.ts · app/lib/utils/refund-utils.ts',
-      'app/_components/refund/RefundV2RulesBody.tsx',
-      'app/(mo)/(new)/…/ContentsComponents/RefundTypeGroup.tsx',
-      'app/(mo)/(legacy)/components/BookingCancelRefundTable.tsx',
     ],
   },
   {
@@ -275,12 +244,6 @@ export const projects: Project[] = [
       { value: '80건', label: '커밋' },
       { value: '3종', label: 'Jest 테스트' },
     ],
-    paths: [
-      'app/(mo)/(legacy)/cas/order-memo/[orderId]/ (page · hooks 4 · components 8 · actions · __tests__ 3)',
-      'app/(mo)/(legacy)/cas/order/[token]/',
-      'app/lib/fetch/server/fetch-naver-travel-order-memo.ts · …/fetch-server-naver-order.ts',
-      'app/lib/redux/slices/bookingMemoFormV2NaverSlice/',
-    ],
   },
   {
     slug: 'usj-dynamic-pricing',
@@ -316,12 +279,6 @@ export const projects: Project[] = [
       { value: '4종', label: 'Redux 슬라이스' },
       { value: '6종', label: 'PC/MO 수량 UI' },
       { value: '933줄', label: '이용일 변경 재계산 시나리오 계획서' },
-    ],
-    paths: [
-      'app/api/v2/product/[productId]/options/[optionId]/dynamic-price/route.ts',
-      'app/lib/fetch/server/fetch-server-tnt-dynamic-price.ts',
-      'app/lib/utils/attrPolicy.ts (+ __tests__)',
-      'docs/dynamic-attr-policy-implementation-summary.md',
     ],
   },
   {
@@ -364,11 +321,6 @@ export const projects: Project[] = [
       { value: '42건', label: '결제 관련 커밋' },
       { value: '3종', label: '직접 작성한 설계 문서' },
     ],
-    paths: [
-      'app/en/ (activity/product · search · booking/new · booking/memo · booking/success · order · inquiry)',
-      'features/payment/hooks/usePayPal.ts · features/payment/actions/captureTnaPayPalOrder.ts',
-      'docs/global-service-prd.md · docs/global-service-design-guide.md',
-    ],
   },
   {
     slug: 'static-promo-bundle-loader',
@@ -403,11 +355,6 @@ export const projects: Project[] = [
     metrics: [
       { value: '9개', label: '운영 중인 번들' },
       { value: '475줄', label: '번들 규격 문서' },
-    ],
-    paths: [
-      'app/marketing/STATIC_PROMO_BUNDLE_GUIDE.md',
-      'app/marketing/[slug]/_static-promo/lib/load-static-promo-bundle.ts',
-      'app/travel-guide/[slug]/_static-promo/ · public/travel-guide/promotions/{slug}/',
     ],
   },
   {
@@ -447,11 +394,6 @@ export const projects: Project[] = [
     metrics: [
       { value: '24개', label: 'PC·MO 메인 컴포넌트 신규 작성' },
       { value: '70건+', label: '집중 커밋 (2025-03~04)' },
-    ],
-    paths: [
-      'apps/privia-front-tnt/src/app/pc/(new)/main/ (TntPcMainPageContent · TntPcProductSlider · TntPcMainFaqSC)',
-      'apps/privia-front-tnt/src/app/(mo)/(new)/main/',
-      'docs/TNT_구축환경_정리.md · GA_GTM_개선_작업계획서.md',
     ],
   },
   {
@@ -493,12 +435,6 @@ export const projects: Project[] = [
       { value: '5종', label: '자체 작성 설계·분석 문서' },
       { value: '1,300줄+', label: '문서 분량' },
       { value: '8종', label: '후기 Server Action' },
-    ],
-    paths: [
-      'src/_lib/serverActions/server-action-review.ts · src/_lib/types/review.ts',
-      'src/_lib/hooks/useReviewHelpfulToggle.ts · useReviewTranslator.ts',
-      '…/product/detail/[productId]/_components/TntMoReviewSection · TntMoPhotoReview',
-      'docs/REVIEW_AND_PHOTOREVIEW_ANALYSIS.md · docs/이용후기_포토이용후기_단계별_구축_계획서.md',
     ],
   },
   {
@@ -544,12 +480,6 @@ export const projects: Project[] = [
       { value: '449줄', label: 'FE 스펙' },
       { value: '4종 + 8종', label: '전용 컴포넌트 · 유틸' },
     ],
-    paths: [
-      'components/MVP/Reschedule/RescheduleDynamicCalendar.vue · RescheduleQuotePreview.vue',
-      'components/MVP/Mypage/Popup/RescheduleDatePopup.vue · ReschedulePopupInner.vue',
-      'mixins/rescheduleDetailMixin.js · utils/rescheduleApi.js · reschedulePolicy.js',
-      'docs/예약상세-이용일변경-다이나믹프라이싱-작업계획서.md · docs/fe-spec.md',
-    ],
   },
   {
     slug: 'hyundai-card-payment',
@@ -584,11 +514,6 @@ export const projects: Project[] = [
     metrics: [
       { value: '10종+', label: 'PC/MO 바우처 결제 팝업' },
       { value: '3종', label: '지속 수정한 결제 모델·화면' },
-    ],
-    paths: [
-      'components/MVP/Reserve/Payment.vue · Mobile/MobilePayment.vue · Mobile/PaymentModel.js',
-      'components/MVP/Reserve/Popup/{Orange,Green3,Red4,RedStripe,Summit}VoucherPayPopup.vue',
-      'components/MVP/Reserve/Popup/ConfirmHccCardPopup.vue · api/common.js',
     ],
   },
   {
@@ -629,11 +554,6 @@ export const projects: Project[] = [
       { value: '10곳', label: '전환한 호출처' },
       { value: '764줄', label: '마이그레이션 계획서' },
     ],
-    paths: [
-      'docs/product-search-extended-api-migration-plan.md',
-      'components/MVP/Product/SearchResult.vue · Mobile/MobileSearchResult.vue',
-      'apps/privia-front-tnt/src/app/(mo)/(new)/main (퀵서치·최근검색)',
-    ],
   },
   {
     slug: 'product-detail-improvements',
@@ -669,11 +589,6 @@ export const projects: Project[] = [
       { value: '279건', label: 'privia-front-tnt 커밋 (2025-03~2026-08)' },
       { value: '290건', label: 'tna-privia-front 커밋 (2022-02~2026-08)' },
       { value: '1,747줄', label: '기능 이식 가이드' },
-    ],
-    paths: [
-      'src/_lib/serverActions/server-action-coupon-download.ts · server-action-coupon-list.ts',
-      'docs/provider-direct-option-refund-ui-porting.md',
-      'docs/USJ_포함선택_어트랙션_확인_기능_가이드.md · docs/JSON-LD-SEO.md',
     ],
   },
   {
@@ -722,12 +637,6 @@ export const projects: Project[] = [
       { value: '17종', label: '산출 템플릿 (투어비스 10 · 프리비아 7)' },
       { value: '4유형', label: '메시지형 · 메시지+버튼형 · 배너/범용형 · 모달형' },
       { value: '단독', label: '레포 단독 작성자 — 기획부터 빌드까지' },
-    ],
-    paths: [
-      'gulpfile.babel.js · src/html/_templates/_layout/_layoutType{1..4,4R}.njk',
-      '_templates/_script/_scriptDashBoard.njk · _scriptIframeReady.njk · _scriptBlockPage.njk',
-      '_templates/_component/ (_messageCont · _messageButton · _bottomCTA · _modalIcon)',
-      'src/html/InWebMessage/{tourvis,privia}/ · _templates/_json/_filelist.json',
     ],
   },
 ];

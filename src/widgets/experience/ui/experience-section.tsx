@@ -2,7 +2,14 @@
 
 import { motion } from 'framer-motion';
 
-import { experiencePhases, serviceScopes, TimelineItem } from '@/entities/experience';
+import {
+  CareerList,
+  careerHistory,
+  careerSummary,
+  experiencePhases,
+  serviceScopes,
+  TimelineItem,
+} from '@/entities/experience';
 import { profile } from '@/entities/profile';
 import { Badge } from '@/shared/ui/badge';
 import { Card, CardContent } from '@/shared/ui/card';
@@ -16,8 +23,8 @@ export function ExperienceSection() {
       <div className="flex flex-col gap-14">
         <SectionHeader
           eyebrow="Experience"
-          title="역할이 확장된 4단계"
-          description="연도별 담당 티켓 수와 업무 성격의 변화입니다. 막대는 해당 연도 티켓 비중을 나타냅니다."
+          title="퍼블리셔 12년, 프론트엔드 5년째"
+          description="2010년 웹 표준·웹 접근성 퍼블리싱으로 시작해 지금은 여행 커머스의 프론트엔드를 맡고 있습니다. 아래 막대는 타이드스퀘어에서의 연도별 티켓 비중입니다."
         />
 
         <div className="grid gap-10 lg:grid-cols-[1fr_320px]">
@@ -79,6 +86,25 @@ export function ExperienceSection() {
               </CardContent>
             </Card>
           </motion.aside>
+        </div>
+
+        <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-2">
+            <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+              <h3 className="text-lg font-semibold">그 이전 — {careerSummary.title}</h3>
+              <span className="font-mono text-xs text-muted-foreground">
+                {careerSummary.period} · {careerSummary.duration}
+              </span>
+            </div>
+            <p className="text-balance-ko max-w-3xl text-sm leading-relaxed text-muted-foreground">
+              {careerSummary.description}
+            </p>
+          </div>
+
+          <CareerList
+            careers={careerHistory}
+            certifications={careerSummary.certifications}
+          />
         </div>
       </div>
     </Section>

@@ -1,4 +1,4 @@
-import type { ExperiencePhase, ServiceScope } from './types';
+import type { CareerEntry, ExperiencePhase, ServiceScope } from './types';
 
 export const experiencePhases: ExperiencePhase[] = [
   {
@@ -97,3 +97,114 @@ export const serviceScopes: ServiceScope[] = [
     mentions: '20+',
   },
 ];
+
+/**
+ * 타이드스퀘어 이전 경력 — 웹 퍼블리셔 · 프론트엔드 (2010.01 – 2021.10, 11년 8개월).
+ * 이력서(2021-11-16 최종수정본) 기준. 최신 순.
+ */
+export const careerHistory: CareerEntry[] = [
+  {
+    id: 'monobrain',
+    company: '모노브레인',
+    period: '2020.10 – 2021.10',
+    duration: '1년 1개월',
+    role: '퍼블리싱 차장 · 팀장',
+    focus: '웹표준 · 웹접근성',
+    summary: 'KERIS 디지털교과서 PM · 초등 전자저작물 스크립트·모션 총괄',
+    highlights: [
+      'KERIS 초등 3·4학년 사회·과학 디지털교과서 출판 — 제작 가이드 및 스크립트 총괄, PM으로 참여',
+      '초등 3~6학년 전자저작물 출판 — 전자저작물에 사용된 스크립트 및 모션 전반 담당',
+    ],
+    stack: ['JavaScript', 'HTML/CSS', '웹접근성'],
+  },
+  {
+    id: 'mediaforce-one',
+    company: '미디어포스원',
+    period: '2013.02 – 2020.07',
+    duration: '7년 6개월',
+    role: 'MG WP 차장',
+    focus: '웹표준 · 웹접근성',
+    summary:
+      'NC소프트 · EPSON · 한화테크윈 · KT&G · AJ셀카 · 롯데건설 · 르노삼성 운영, 국민카드 라이프플라자몰 퍼블리싱 PL',
+    highlights: [
+      'NC소프트 프로모션 5년 담당(2015.05–2020.06) — 리니지·리니지2·블레이드&소울·아이온 프로모션 및 업데이트 페이지 FE 개발. 타이트한 일정에도 높은 완성도로 고객사 평가를 받음',
+      'EPSON 제품군 웹 카달로그·프로모션 접근성 FE 개발(2014.09–2020.06)',
+      '한화테크윈 사이트 운영(2014.02–2020.06) — 삼성테크윈부터 이어진 앱 개발 참여로 현업 개발팀과 관계를 유지하며 여러 앱 프로젝트에 합류',
+      'AJ셀카 차량 견적 비교평가 시스템 개발 참여 및 전체 사이트 운영(2018.03–2020.03)',
+      'KT&G lil · 사회공헌 · 복지재단 · 기업 사이트 운영(2014.02–2019.02)',
+      '삼성 헬스케어 닷컴 · 롯데건설 · 삼성 래미안 분양 · 르노삼성자동차 사이트 운영',
+      '국민카드 라이프 플라자 몰 구축(2015.01–05) — 퍼블리싱 PL로 업무 스케줄 및 CSS/JS 가이드 작업. 보안 이슈로 열악한 환경이었으나 팀을 이끌어 성공적으로 마무리',
+      '삼성테크윈 SMART ROOM Control tablet · SSM VA10 V2.0 · PNP 모바일 앱 구축 — AngularJS 적용',
+      'KT&G 청년창업 지원센터 · 2016 상상실현 페스티벌 구축',
+    ],
+    stack: ['AngularJS', 'PIXI.js', 'TweenMax', 'jQuery', 'CSS at-rule', '웹접근성'],
+  },
+  {
+    id: 'cloud9',
+    company: '클라우드나인',
+    period: '2012.06 – 2013.01',
+    duration: '8개월',
+    role: '퍼블리싱 대리 · 파트장',
+    focus: '웹표준 · 웹접근성',
+    summary: 'KCB 파견 — allcredit 차세대, d3.js 연봉통계 그래프, 사내 TM 시스템',
+    highlights: [
+      '신용등급 검색 및 개인 신용관리 사이트(allcredit.co.kr) 차세대 프로젝트 — 디자인·개발 파트 간 커뮤니케이션 효율에 기여',
+      '연봉검색·연봉통계·개인연봉관리 사이트 — d3.js 통계 그래프와 데이터 적용으로 개발 파트를 지원해 업무 소요 시간 단축',
+      'KCB 사내 TM(TeleMarketing) 시스템 구축 — jqGrid + ajax 활용',
+      'KCB 파견 근무로 현업 커뮤니케이션과 타 파트 협업 경험. 파트장으로 후임 기술 향상과 스케줄 관리 담당',
+    ],
+    stack: ['d3.js', 'jqGrid', 'jQuery', 'ajax'],
+  },
+  {
+    id: 'weesgroup',
+    company: '위즈그룹',
+    period: '2012.02 – 2012.06',
+    duration: '5개월',
+    role: 'e-bi 본부 대리',
+    focus: '웹표준 · 웹접근성 · 컨텐츠 관리',
+    summary: 'ASP · ASP.NET 프로젝트를 병행하며 프론트엔드 개발 역할로 확장',
+    highlights: [
+      'e-bi 본부 제작파트에서 퍼블리싱과 함께 ASP · ASP.NET 프로젝트를 수행하며 프론트엔드 개발자로서의 역할을 익힘',
+    ],
+    stack: ['ASP', 'ASP.NET', 'jQuery'],
+  },
+  {
+    id: 'easeldesign',
+    company: '이젤디자인',
+    period: '2011.02 – 2012.02',
+    duration: '1년 1개월',
+    role: '디자인파트 퍼블리싱 주임 · 계장',
+    focus: '웹접근성 코딩 및 jQuery 모션',
+    summary: '디자이너·개발자 사이 조율 역할, 사내 퍼블리싱 교육 운영',
+    highlights: [
+      '퍼블리싱과 함께 디자이너·개발자 사이의 중간자 역할을 수행하며 프로젝트 진행을 조율',
+      '업무 시간 이후 사내 구성원에게 퍼블리싱과 프로젝트 수행 노하우를 가르치는 교육 시간 운영',
+    ],
+    stack: ['jQuery', 'HTML/CSS', '웹접근성'],
+  },
+  {
+    id: 's-prism',
+    company: '에스프리즘',
+    period: '2010.01 – 2011.02',
+    duration: '1년 2개월',
+    role: '웹퍼블리싱 사원',
+    focus: '웹접근성 코딩 및 스크립트 구현',
+    summary: '대형 프로젝트 유지보수 — 업무 분할과 협업의 기본기를 익힌 시기',
+    highlights: [
+      '대형 프로젝트 유지보수를 맡으며 업무 분할과 협업의 중요성을 익힌 시기',
+    ],
+    stack: ['HTML/CSS', 'JavaScript', '웹접근성'],
+  },
+];
+
+export const careerSummary = {
+  period: '2010.01 – 2021.10',
+  duration: '11년 8개월',
+  title: '웹 퍼블리셔 · 프론트엔드',
+  description:
+    '에이전시에서 11년 8개월간 웹 표준·웹 접근성 기반 퍼블리싱을 담당했습니다. 게임·전자·금융·건설·공공 등 도메인을 오가며 대형 사이트의 운영과 구축을 맡았고, 파트장·팀장으로 스케줄 관리와 후임 교육을 병행했습니다. 지금 서비스 품질 지표(접근성·SEO·렌더링 성능)를 직접 다루는 배경입니다.',
+  certifications: [
+    { name: '민간개발자 웹 접근성 전문교육 수료', issuer: '한국생산성본부', date: '2010.07' },
+    { name: 'GTQ 1급', issuer: '한국생산성본부', date: '2009.07' },
+  ],
+};

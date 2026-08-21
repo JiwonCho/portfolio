@@ -10,7 +10,7 @@ export const profile: Profile = {
   duration: '4년 7개월',
   headline: ['경계를 긋고 규칙을 남기는', '프론트엔드 엔지니어'],
   summary:
-    '여행 커머스 서비스(투어비스·프리비아)의 상품 탐색–예약–결제 전 구간을 담당합니다. Next.js·TypeScript 기반 pnpm 모노레포 두 곳과 Nuxt 기반 예약·결제 서비스를 함께 다루며, 투어&티켓 상품상세·옵션선택 플로우를 재구축하고 SEO·LCP·로깅 규격화까지 서비스 품질 전반을 맡고 있습니다.',
+    '여행 커머스 서비스(투어비스·프리비아)의 상품 탐색–예약–결제 전 구간을 담당합니다. Next.js·TypeScript 기반 pnpm 모노레포 두 곳과 Nuxt 기반 예약·결제 서비스를 함께 다루며, 투어&티켓 상품상세·옵션선택 플로우를 재구축하고 SEO·LCP·로깅 규격화까지 서비스 품질 전반을 맡고 있습니다. 그 앞의 11년 8개월은 웹 표준·웹 접근성 퍼블리싱이었습니다.',
   philosophy: [
     {
       title: '기능보다 경계를 먼저 정한다',
@@ -41,7 +41,12 @@ export const profile: Profile = {
       label: '커밋',
       note: 'tourvis-front 1,520 · privia 3개 레포 합산',
     },
-    { value: '4', suffix: '년 7개월', label: '경력', note: '2022.01.06 – 재직 중' },
+    {
+      value: '16',
+      suffix: '년 3개월',
+      label: '총 경력',
+      note: '퍼블리싱 11년 8개월 · 프론트엔드 4년 7개월',
+    },
     { value: '4', label: '동시 운영 코드베이스', note: 'Next.js 3 · Nuxt 2 / Vue 2 1' },
   ],
 };

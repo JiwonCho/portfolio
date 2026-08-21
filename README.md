@@ -87,6 +87,7 @@ export const { selectTheme } = injectedThemeSlice.selectors;
 | 이름·소개·통계 | `src/entities/profile/model/profile.data.ts` |
 | 기술 스택 | `src/entities/skill/model/skills.data.ts` |
 | 경력 타임라인 · 서비스 범위 | `src/entities/experience/model/experience.data.ts` |
+| 퍼블리셔 경력 (2010–2021) | `src/entities/experience/model/experience.data.ts` 의 `careerHistory` |
 | 프로젝트 16건 | `src/entities/project/model/projects.data.ts` |
 | 사이트 메타 · 외부 링크 | `src/shared/config/site.ts` |
 | 테마 색 | `app/globals.css` 의 `:root` / `.dark` |

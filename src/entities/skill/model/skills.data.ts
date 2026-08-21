@@ -101,6 +101,22 @@ export const skillGroups: SkillGroup[] = [
     ],
   },
   {
+    id: 'standards',
+    label: '웹 표준 · 접근성',
+    description: '퍼블리싱 11년 8개월 동안의 축이었고, 지금은 SEO·시맨틱·렌더링 품질로 이어집니다.',
+    skills: [
+      {
+        name: '웹 접근성',
+        primary: true,
+        note: '민간개발자 웹 접근성 전문교육 수료(한국생산성본부) · 공공·금융·대기업 사이트 접근성 대응',
+      },
+      { name: 'SEO', primary: true, note: 'canonical · H1 · noindex · sitemap · JSON-LD 구조화 데이터' },
+      { name: 'Core Web Vitals', primary: true, note: 'LCP 개선 · 스켈레톤으로 CLS 제거 · 이미지 ratio 최적화' },
+      { name: '시맨틱 마크업', note: '헤딩 트리 정리, 대체 텍스트 보강' },
+      { name: '크로스브라우징', note: 'iOS 백화·dvh·주소창 대응' },
+    ],
+  },
+  {
     id: 'ai',
     label: 'AI 활용',
     description: '',

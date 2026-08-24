@@ -8,6 +8,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     { url: siteConfig.url, lastModified, changeFrequency: 'monthly', priority: 1 },
+    {
+      url: `${siteConfig.url}/contact`,
+      lastModified,
+      changeFrequency: 'yearly',
+      priority: 0.8,
+    },
     ...projects.map((project) => ({
       url: `${siteConfig.url}/projects/${project.slug}`,
       lastModified,

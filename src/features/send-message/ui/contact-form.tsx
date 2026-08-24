@@ -12,13 +12,16 @@ import { Label } from '@/shared/ui/label';
 import { Textarea } from '@/shared/ui/textarea';
 
 import { sendMessageAction } from '../api/send-message.action';
-import { validateContactPayload, type ContactPayload } from '../model/schema';
+import { validateContactPayload, type ContactPayload, type ContactResult } from '../model/schema';
 import {
+  selectContactMessage,
   selectContactStatus,
   submitFailed,
   submitStarted,
   submitSucceeded,
 } from '../model/contact-form.slice';
+
+const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit';
 
 function openMailto(payload: ContactPayload) {
   const subject = encodeURIComponent(`[포트폴리오] ${payload.name} 님의 문의`);
@@ -26,12 +29,37 @@ function openMailto(payload: ContactPayload) {
   window.location.href = `mailto:${socialLinks.email}?subject=${subject}&body=${body}`;
 }
 
-export function ContactForm() {
+async function deliverViaWeb3Forms(payload: ContactPayload, accessKey: string): Promise<ContactResult> {
+  const response = await fetch(WEB3FORMS_ENDPOINT, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+    body: JSON.stringify({
+      access_key: accessKey,
+      subject: `[포트폴리오] ${payload.name} 님의 문의`,
+      from_name: payload.name,
+      name: payload.name,
+      email: payload.email,
+      replyto: payload.email,
+      message: payload.message,
+    }),
+  });
+  const data = (await response.json().catch(() => ({}))) as { success?: boolean | string; message?: string };
+  const ok = data.success === true || data.success === 'true';
+  if (ok) {
+    return { ok: true, message: '메시지를 전달했습니다. 빠르게 회신드리겠습니다.' };
+  }
+  return { ok: false, message: '전송에 실패했습니다. 잠시 후 다시 시도해 주세요.' };
+}
+
+export function ContactForm({ accessKey }: { accessKey?: string }) {
   const dispatch = useAppDispatch();
   const status = useAppSelector(selectContactStatus);
+  const statusMessage = useAppSelector(selectContactMessage);
   const formRef = useRef<HTMLFormElement>(null);
 
   const isSubmitting = status === 'submitting';
+  const isSuccess = status === 'success';
+  const isError = status === 'error';
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -52,7 +80,9 @@ export function ContactForm() {
     }
 
     dispatch(submitStarted());
-    const result = await sendMessageAction(payload);
+    const result = accessKey
+      ? await deliverViaWeb3Forms(payload, accessKey)
+      : await sendMessageAction(payload);
 
     if (result.ok) {
       dispatch(submitSucceeded(result.message));
@@ -63,9 +93,8 @@ export function ContactForm() {
 
     dispatch(submitFailed(result.message));
     if (result.fallbackToMailto) {
-      toast.info(result.message, {
-        action: { label: '메일 앱 열기', onClick: () => openMailto(payload) },
-      });
+      openMailto(payload);
+      toast.info(result.message);
     } else {
       toast.error(result.message);
     }
@@ -86,7 +115,14 @@ export function ContactForm() {
       <div className="grid gap-4 sm:grid-cols-2">
         <div className="flex flex-col gap-2">
           <Label htmlFor="contact-name">이름</Label>
-          <Input id="contact-name" name="name" placeholder="홍길동" autoComplete="name" required />
+          <Input
+            id="contact-name"
+            name="name"
+            placeholder="홍길동"
+            autoComplete="name"
+            required
+            disabled={isSubmitting}
+          />
         </div>
         <div className="flex flex-col gap-2">
           <Label htmlFor="contact-email">이메일</Label>
@@ -97,6 +133,7 @@ export function ContactForm() {
             placeholder="you@company.com"
             autoComplete="email"
             required
+            disabled={isSubmitting}
           />
         </div>
       </div>
@@ -109,8 +146,21 @@ export function ContactForm() {
           rows={6}
           placeholder="어떤 포지션인지, 어떤 이야기를 나누고 싶은지 적어 주세요."
           required
+          disabled={isSubmitting}
         />
       </div>
+
+      {statusMessage ? (
+        <p
+          role="status"
+          aria-live="polite"
+          className={
+            isError ? 'text-sm text-destructive' : isSuccess ? 'text-sm text-primary' : 'sr-only'
+          }
+        >
+          {statusMessage}
+        </p>
+      ) : null}
 
       <Button type="submit" size="lg" disabled={isSubmitting} className="self-start">
         {isSubmitting ? <LoaderCircle className="animate-spin" aria-hidden /> : <Send aria-hidden />}

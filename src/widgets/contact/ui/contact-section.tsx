@@ -29,7 +29,7 @@ export function ContactSection() {
         <div className="grid gap-8 lg:grid-cols-[1fr_340px]">
           <Card>
             <CardContent>
-              <ContactForm />
+              <ContactForm accessKey={process.env.WEB3FORMS_ACCESS_KEY} />
             </CardContent>
           </Card>
 

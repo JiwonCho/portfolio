@@ -3,10 +3,10 @@
 import { useRef, type MouseEvent } from 'react';
 import Link from 'next/link';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { ArrowDown, ArrowRight, Download, Mail } from 'lucide-react';
+import { ArrowDown, ArrowRight, Download, FileText, Mail } from 'lucide-react';
 
 import { profile } from '@/entities/profile';
-import { socialLinks } from '@/shared/config';
+import { documentLinks } from '@/shared/config';
 import { usePrefersReducedMotion } from '@/shared/lib';
 import { Button } from '@/shared/ui/button';
 
@@ -121,9 +121,20 @@ export function HeroSection() {
             asChild
             className="h-11 border-hero-line bg-hero-cell px-5 text-sm text-hero-foreground backdrop-blur-sm hover:bg-hero-cell-active hover:text-hero-foreground"
           >
-            <a href={socialLinks.resume} download>
-              이력서 다운로드
+            <a href={documentLinks.resume.href} download={documentLinks.resume.filename}>
+              {documentLinks.resume.label}
               <Download aria-hidden />
+            </a>
+          </Button>
+          <Button
+            size="lg"
+            variant="outline"
+            asChild
+            className="h-11 border-hero-line bg-hero-cell px-5 text-sm text-hero-foreground backdrop-blur-sm hover:bg-hero-cell-active hover:text-hero-foreground"
+          >
+            <a href={documentLinks.career.href} download={documentLinks.career.filename}>
+              {documentLinks.career.label}
+              <FileText aria-hidden />
             </a>
           </Button>
           <Button

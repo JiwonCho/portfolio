@@ -5,8 +5,8 @@ export const experiencePhases: ExperiencePhase[] = [
     id: 'phase-2022',
     period: '2022 – 2023',
     title: '퍼블리싱 · 운영 대응',
-    ticketCount: 295,
-    ticketBreakdown: 'DT 270 / TPT 17',
+    ticketCount: 300,
+    ticketBreakdown: '약 300건',
     summary:
       '프리비아 항공·숙소 영역의 마크업과 운영 이슈 대응이 중심이었습니다. GNB·햄버거 메뉴·퀵서치·헤더 같은 공통 영역과 크로스브라우징, 정책 반영 작업을 담당했습니다.',
     highlights: [
@@ -19,8 +19,8 @@ export const experiencePhases: ExperiencePhase[] = [
     id: 'phase-2024',
     period: '2024',
     title: '대량 전시 · 컴포넌트 개발 진입',
-    ticketCount: 426,
-    ticketBreakdown: 'RVYN 306 / DT 116',
+    ticketCount: 430,
+    ticketBreakdown: '약 430건',
     summary:
       '연간 처리량이 3배로 뛴 해입니다. 반복 전시 작업의 처리 속도를 끌어올리는 동시에, 프리비아 해외패키지 신규 구축에 초기 구조 설계부터 참여하며 퍼블리싱에서 개발로 무게중심을 옮겼습니다.',
     highlights: [
@@ -34,8 +34,8 @@ export const experiencePhases: ExperiencePhase[] = [
     id: 'phase-2025',
     period: '2025',
     title: '프론트엔드 개발 전환',
-    ticketCount: 433,
-    ticketBreakdown: 'DT 240 / TPT 157',
+    ticketCount: 430,
+    ticketBreakdown: '약 430건',
     summary:
       'tourvis-front 리포지토리 첫 커밋(2025-01-08) 이후 그 해에만 951건을 커밋했습니다. 투어비스와 프리비아 두 브랜드의 프런트를 동시에 맡기 시작한 시점입니다.',
     highlights: [
@@ -50,8 +50,8 @@ export const experiencePhases: ExperiencePhase[] = [
     id: 'phase-2026',
     period: '2026',
     title: '아키텍처 · 품질 · 글로벌',
-    ticketCount: 181,
-    ticketBreakdown: '8월 11일 기준',
+    ticketCount: 180,
+    ticketBreakdown: '약 180건 · 8월 기준',
     summary:
       '기능 구현을 넘어 서비스 품질 지표를 직접 다루는 단계입니다. Next.js와 Nuxt 2를 오가며 두 브랜드 · 네 개 코드베이스를 동시에 다뤘습니다.',
     highlights: [

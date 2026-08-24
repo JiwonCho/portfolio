@@ -2,8 +2,9 @@ export interface ExperiencePhase {
   id: string;
   period: string;
   title: string;
-  /** 해당 기간 티켓 수 — 타임라인 막대 비중 계산에 쓴다 */
+  /** 해당 기간 티켓 수(개략) — 타임라인 막대 비중 계산에 쓴다 */
   ticketCount: number;
+  /** 배지에 표시할 개략 수량. 사내 티켓 키는 넣지 않는다. */
   ticketBreakdown: string;
   summary: string;
   highlights: string[];

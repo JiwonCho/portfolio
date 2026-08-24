@@ -18,8 +18,19 @@ export const socialLinks = {
   blog: "",
   /** TODO(자료 필요): LinkedIn URL */
   linkedin: "",
-  /** TODO(자료 필요): public/resume.pdf 에 이력서 PDF 배치 */
-  resume: "/resume.pdf",
+} as const;
+
+export const documentLinks = {
+  resume: {
+    href: "/resume.pdf",
+    filename: "조지원_이력서_20260824.pdf",
+    label: "이력서 다운로드",
+  },
+  career: {
+    href: "/career.html",
+    filename: "조지원_경력서_20260824.html",
+    label: "경력기술서 다운로드",
+  },
 } as const;
 
 export const navItems = [

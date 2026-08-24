@@ -6,7 +6,7 @@ import { motion, useMotionValueEvent, useScroll } from 'framer-motion';
 import { Menu } from 'lucide-react';
 
 import { ThemeToggle } from '@/features/toggle-theme';
-import { navItems, socialLinks } from '@/shared/config';
+import { navItems, sectionIds, socialLinks } from '@/shared/config';
 import { cn, useActiveSection } from '@/shared/lib';
 import { GithubIcon } from '@/shared/ui/brand-icons';
 import { Button } from '@/shared/ui/button';
@@ -19,13 +19,11 @@ import {
   SheetTrigger,
 } from '@/shared/ui/sheet';
 
-const SECTION_IDS = navItems.map((item) => item.id);
-
 export function SiteHeader() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { scrollY } = useScroll();
-  const activeId = useActiveSection(SECTION_IDS);
+  const activeId = useActiveSection(sectionIds);
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
     setIsScrolled(latest > 24);

@@ -23,11 +23,11 @@ export function TimelineItem({ phase, maxTicketCount, index, className }: { phas
         </div>
 
         <div className="flex items-center gap-3">
-          <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-muted" role="img" aria-label={`${phase.period} 티켓 ${phase.ticketCount}건`}>
+          <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-muted" role="img" aria-label={`${phase.period} 티켓 ${phase.ticketBreakdown}`}>
             <motion.div initial={{ scaleX: 0 }} whileInView={{ scaleX: ratio / 100 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.2 + index * 0.06, ease: [0.16, 1, 0.3, 1] }} style={{ transformOrigin: "left" }} className="h-full w-full rounded-full bg-primary" />
           </div>
           <Badge variant="outline" className="shrink-0 font-mono text-[11px] font-normal">
-            {phase.ticketCount}건 · {phase.ticketBreakdown}
+            {phase.ticketBreakdown}
           </Badge>
         </div>
 

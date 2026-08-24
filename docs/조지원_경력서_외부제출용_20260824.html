@@ -1,0 +1,1296 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>조지원 — 프론트엔드 엔지니어 경력기술서</title>
+<meta name="description" content="여행 커머스(투어비스·프리비아) 프론트엔드 엔지니어 조지원 경력기술서 — 기술 스택, 경력 아크, 대표 프로젝트 및 주요 과제 기술 상세">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0}
+  img,svg{max-width:100%;height:auto;display:block}
+  ul,ol{margin:0}
+  table{border-collapse:collapse}
+</style>
+</head>
+<body><style>
+  /* ── tokens: light is the base, both dark states redefine only tokens ───── */
+  :root {
+    --ground:      #f4f6f5;
+    --surface:     #ffffff;
+    --surface-2:   #eaeeec;
+    --line:        #d3dad7;
+    --line-soft:   #e3e8e6;
+    --ink:         #16211f;
+    --ink-2:       #3d4a47;
+    --ink-3:       #6b7975;
+    --accent:      #0f6f6c;
+    --accent-ink:  #0a4f4d;
+    --accent-wash: #dceceb;
+    --signal:      #8a5a12;
+    --signal-wash: #f2e9d8;
+    --shadow:      0 1px 2px rgba(22,33,31,.06), 0 8px 24px -16px rgba(22,33,31,.28);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground:      #0e1413;
+      --surface:     #151d1c;
+      --surface-2:   #1d2726;
+      --line:        #2c3937;
+      --line-soft:   #232e2d;
+      --ink:         #e6ecea;
+      --ink-2:       #b3c1bd;
+      --ink-3:       #7f8f8b;
+      --accent:      #5fc9c3;
+      --accent-ink:  #8fdcd7;
+      --accent-wash: #123230;
+      --signal:      #d8a95f;
+      --signal-wash: #2e2618;
+      --shadow:      0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.7);
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground:      #0e1413;
+    --surface:     #151d1c;
+    --surface-2:   #1d2726;
+    --line:        #2c3937;
+    --line-soft:   #232e2d;
+    --ink:         #e6ecea;
+    --ink-2:       #b3c1bd;
+    --ink-3:       #7f8f8b;
+    --accent:      #5fc9c3;
+    --accent-ink:  #8fdcd7;
+    --accent-wash: #123230;
+    --signal:      #d8a95f;
+    --signal-wash: #2e2618;
+    --shadow:      0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.7);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI",
+                 "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", sans-serif;
+    font-size: 16px;
+    line-height: 1.72;
+    -webkit-font-smoothing: antialiased;
+    word-break: keep-all;
+  }
+
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 28px 120px; }
+
+  /* ── masthead ──────────────────────────────────────────────────────────── */
+  .mast { padding: 72px 0 40px; border-bottom: 2px solid var(--ink); }
+  .eyebrow {
+    font-family: ui-monospace, "Cascadia Mono", Consolas, "SF Mono", monospace;
+    font-size: 11.5px; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--accent-ink); margin: 0 0 18px;
+  }
+  h1 {
+    font-family: Georgia, "Times New Roman", "Nanum Myeongjo", Batang, serif;
+    font-size: clamp(2.1rem, 5vw, 3.1rem); line-height: 1.14; font-weight: 400;
+    letter-spacing: -.015em; margin: 0 0 20px; text-wrap: balance;
+  }
+  h1 em { font-style: italic; color: var(--accent); }
+  .standfirst {
+    font-size: 1.06rem; color: var(--ink-2); max-width: 62ch; margin: 0;
+  }
+
+  /* ── metric strip ──────────────────────────────────────────────────────── */
+  .metrics {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1px; background: var(--line); border: 1px solid var(--line);
+    margin: 0 0 56px; border-top: none;
+  }
+  .metric { background: var(--surface); padding: 22px 20px 20px; }
+  .metric .n {
+    font-family: ui-monospace, "Cascadia Mono", Consolas, "SF Mono", monospace;
+    font-variant-numeric: tabular-nums;
+    font-size: 1.85rem; line-height: 1.1; color: var(--ink); display: block;
+  }
+  .metric .n small { font-size: .95rem; color: var(--ink-3); }
+  .metric .l {
+    font-size: 12px; letter-spacing: .04em; color: var(--ink-3);
+    margin-top: 8px; display: block;
+  }
+
+  /* ── sections ──────────────────────────────────────────────────────────── */
+  section { margin: 0 0 68px; }
+  .sec-head {
+    display: flex; align-items: baseline; gap: 14px;
+    border-bottom: 1px solid var(--line); padding-bottom: 10px; margin-bottom: 26px;
+  }
+  .sec-head .mark {
+    font-family: ui-monospace, "Cascadia Mono", Consolas, "SF Mono", monospace;
+    font-size: 11.5px; letter-spacing: .12em; color: var(--accent);
+    text-transform: uppercase; white-space: nowrap;
+  }
+  h2 {
+    font-family: Georgia, "Times New Roman", "Nanum Myeongjo", Batang, serif;
+    font-size: 1.5rem; font-weight: 400; letter-spacing: -.01em; margin: 0;
+  }
+  h3 {
+    font-size: 1.02rem; font-weight: 650; margin: 0 0 8px; letter-spacing: -.005em;
+  }
+  p { margin: 0 0 14px; }
+  .lede { color: var(--ink-2); max-width: 66ch; margin-bottom: 24px; }
+
+  /* ── copy-ready blocks ─────────────────────────────────────────────────── */
+  .copyblock {
+    background: var(--surface); border: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+    padding: 20px 22px; margin: 0 0 14px; box-shadow: var(--shadow);
+  }
+  .copyblock .tag {
+    font-family: ui-monospace, "Cascadia Mono", Consolas, "SF Mono", monospace;
+    font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--ink-3); display: block; margin-bottom: 10px;
+  }
+  .copyblock p:last-child { margin-bottom: 0; }
+
+  /* ── stack table ───────────────────────────────────────────────────────── */
+  .tablewrap { overflow-x: auto; border: 1px solid var(--line); background: var(--surface); }
+  table { border-collapse: collapse; width: 100%; min-width: 660px; font-size: 14.5px; }
+  th, td { text-align: left; padding: 13px 18px; border-bottom: 1px solid var(--line-soft); vertical-align: top; }
+  thead th {
+    font-family: ui-monospace, "Cascadia Mono", Consolas, "SF Mono", monospace;
+    font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--ink-3); background: var(--surface-2); border-bottom: 1px solid var(--line);
+    font-weight: 500;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  td.cat { font-weight: 650; white-space: nowrap; color: var(--ink); }
+  td.items { color: var(--ink-2); }
+  .num { font-variant-numeric: tabular-nums; font-family: ui-monospace, "Cascadia Mono", Consolas, "SF Mono", monospace; }
+
+  /* ── timeline ──────────────────────────────────────────────────────────── */
+  .era {
+    display: grid; grid-template-columns: 176px 1fr; gap: 28px;
+    padding: 26px 0; border-top: 1px solid var(--line-soft);
+  }
+  .era:first-of-type { border-top: none; }
+  .era-spine .yr {
+    font-family: ui-monospace, "Cascadia Mono", Consolas, "SF Mono", monospace;
+    font-variant-numeric: tabular-nums;
+    font-size: 1.25rem; color: var(--accent); display: block; letter-spacing: -.01em;
+  }
+  .era-spine .cnt {
+    font-family: ui-monospace, "Cascadia Mono", Consolas, "SF Mono", monospace;
+    font-size: 12px; color: var(--ink-3); display: block; margin-top: 4px;
+  }
+  .bar { height: 5px; background: var(--accent-wash); margin-top: 12px; position: relative; }
+  .bar i { position: absolute; inset: 0 auto 0 0; background: var(--accent); display: block; }
+  .era-body p { margin-bottom: 10px; }
+  .era-body p:last-child { margin-bottom: 0; }
+  .role {
+    display: inline-block; font-size: 11.5px; letter-spacing: .07em;
+    font-family: ui-monospace, "Cascadia Mono", Consolas, "SF Mono", monospace;
+    text-transform: uppercase; color: var(--accent-ink);
+    background: var(--accent-wash); padding: 3px 9px; margin-bottom: 10px;
+  }
+
+  /* ── project cards ─────────────────────────────────────────────────────── */
+  .projects { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .proj { background: var(--surface); padding: 22px 24px; }
+  .proj ul { margin: 10px 0 12px; padding-left: 20px; color: var(--ink-2); }
+  .proj li { margin-bottom: 6px; }
+  /* ── deep dive ─────────────────────────────────────────────────────────── */
+  .deeps { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .deep { background: var(--surface); padding: 26px 26px 22px; }
+  .deep-head { margin-bottom: 16px; }
+  .deep-head h3 {
+    font-family: Georgia, "Times New Roman", "Nanum Myeongjo", Batang, serif;
+    font-size: 1.22rem; font-weight: 400; letter-spacing: -.01em; margin: 0;
+    line-height: 1.35;
+  }
+  .deep-head h3 .idx {
+    font-family: ui-monospace, "Cascadia Mono", Consolas, "SF Mono", monospace;
+    font-size: .78em; color: var(--accent); margin-right: 8px;
+    font-variant-numeric: tabular-nums;
+  }
+  .repo {
+    display: inline-block; font-size: 11px; letter-spacing: .06em;
+    font-family: ui-monospace, "Cascadia Mono", Consolas, "SF Mono", monospace;
+    color: var(--accent-ink); background: var(--accent-wash);
+    padding: 3px 9px; margin-bottom: 10px;
+  }
+  .deep dl { margin: 0; display: grid; grid-template-columns: 92px 1fr; gap: 4px 20px; }
+  .deep dt {
+    font-size: 11.5px; letter-spacing: .08em; color: var(--ink-3);
+    font-family: ui-monospace, "Cascadia Mono", Consolas, "SF Mono", monospace;
+    text-transform: uppercase; padding-top: 5px;
+  }
+  .deep dd { margin: 0 0 14px; color: var(--ink-2); }
+  .deep dd:last-of-type { margin-bottom: 10px; }
+  .deep dd ul { margin: 0; padding-left: 19px; }
+  .deep dd li { margin-bottom: 7px; }
+  .deep dd li:last-child { margin-bottom: 0; }
+  .deep dd li ul {
+    padding-left: 16px; border-left: 2px solid var(--accent-wash);
+    margin-left: 2px; list-style: none;
+  }
+  .deep dd li ul li { margin-bottom: 6px; text-indent: -12px; padding-left: 12px; }
+  .deep dd li ul li::before { content: "▸ "; color: var(--accent); }
+  .deep dd strong { color: var(--ink); font-weight: 650; }
+
+  code {
+    font-family: ui-monospace, "Cascadia Mono", Consolas, "SF Mono", monospace;
+    font-size: .88em; background: var(--surface-2); padding: 1px 5px;
+    border: 1px solid var(--line-soft); color: var(--ink-2);
+  }
+
+  footer {
+    border-top: 1px solid var(--line); padding-top: 20px; margin-top: 8px;
+    font-size: 13px; color: var(--ink-3);
+  }
+
+  @media (max-width: 720px) {
+    .wrap { padding: 0 18px 80px; }
+    .mast { padding-top: 48px; }
+    .era { grid-template-columns: 1fr; gap: 12px; }
+    .bar { max-width: 220px; }
+    .deep { padding: 22px 18px 18px; }
+    .deep dl { grid-template-columns: 1fr; gap: 2px; }
+    .deep dt { padding-top: 10px; }
+    .deep dd { margin-bottom: 10px; }
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="mast">
+    <p class="eyebrow">Career Dossier · 2022.01 – 2026.08</p>
+    <h1>여행 커머스의 탐색부터 결제까지<br><em>퍼블리셔에서 프론트엔드 엔지니어</em>로</h1>
+    <p class="standfirst">
+      퍼블리싱으로 시작해 프론트엔드 엔지니어링으로 역할을 넓혀 온 4년 7개월의 기록입니다.
+      직접 구현한 기능과 설계 판단을 기준으로 정리했습니다.
+    </p>
+  </header>
+
+  <div class="metrics">
+    <div class="metric">
+      <span class="n">4<small>년 7개월</small></span>
+      <span class="l">2022.01 – 2026.08</span>
+    </div>
+    <div class="metric">
+      <span class="n">2<small>개 브랜드</small></span>
+      <span class="l">투어비스 · 프리비아</span>
+    </div>
+    <div class="metric">
+      <span class="n">4<small>개 코드베이스</small></span>
+      <span class="l">Next.js App/Pages Router · Nuxt 2</span>
+    </div>
+    <div class="metric">
+      <span class="n">1,520</span>
+      <span class="l">주력 리포지토리 커밋 (2025.01~)</span>
+    </div>
+    <div class="metric">
+      <span class="n">7,156</span>
+      <span class="l">.tsx/.ts 파일 변경</span>
+    </div>
+  </div>
+
+  <!-- ═══ 요약 ═══ -->
+  <section>
+    <div class="sec-head">
+      <span class="mark">01 / Summary</span>
+      <h2>요약</h2>
+    </div>
+
+    <div class="copyblock">
+      <p>
+        여행 커머스 서비스(투어비스·프리비아)의 상품 탐색–예약–결제 전 구간을 담당하는 프론트엔드 개발자입니다.
+        Next.js·TypeScript 기반 pnpm 모노레포 두 곳과 Nuxt 기반 예약·결제 서비스를 함께 다루며
+        투어&amp;티켓 상품상세·옵션선택 플로우를 재구축했고,
+        SEO·LCP·로깅 규격화까지 서비스 품질 전반을 맡고 있습니다.
+        2022년 1월부터 4년 7개월간 두 브랜드의 프론트엔드를 담당해 왔습니다.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ 기술 스택 ═══ -->
+  <section>
+    <div class="sec-head">
+      <span class="mark">02 / Stack</span>
+      <h2>기술 스택</h2>
+    </div>
+    <p class="lede">
+      실제 프로덕션 코드베이스에서 사용한 항목입니다.
+      <strong>굵게 표시한 것</strong>이 주력 스택이고, 나머지는 유지보수·부분 도입 경험입니다.
+    </p>
+
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr><th>분류</th><th>내용</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="cat">언어 · 코어</td>
+            <td class="items"><strong>TypeScript</strong>, <strong>React 18 / 19</strong>, <strong>Next.js 14 · 16</strong> (App Router · Pages Router 병행), <strong>Nuxt 2 / Vue 2</strong>(프리비아 투티 예약·결제), JavaScript, HTML/CSS</td>
+          </tr>
+          <tr>
+            <td class="cat">상태 관리</td>
+            <td class="items"><strong>TanStack Query v4/v5</strong>, <strong>Zustand</strong>, Redux Toolkit, Jotai, SWR, immer, Vuex</td>
+          </tr>
+          <tr>
+            <td class="cat">스타일링</td>
+            <td class="items"><strong>Tailwind CSS v4</strong>, <strong>Radix UI</strong> + CVA + tailwind-merge (shadcn 계열), Emotion, styled-components, SCSS, MUI</td>
+          </tr>
+          <tr>
+            <td class="cat">폼 · 검증</td>
+            <td class="items"><strong>react-hook-form</strong> + <strong>Zod</strong></td>
+          </tr>
+          <tr>
+            <td class="cat">테스트 · 문서화</td>
+            <td class="items"><strong>Jest</strong> + Testing Library, <strong>Playwright</strong> (E2E), <strong>Storybook</strong></td>
+          </tr>
+          <tr>
+            <td class="cat">모니터링 · 분석</td>
+            <td class="items"><strong>Sentry</strong>, <strong>GA4 / GTM</strong>, pino 구조화 로깅, Matomo</td>
+          </tr>
+          <tr>
+            <td class="cat">마케팅 · CRM</td>
+            <td class="items"><strong>Braze</strong> — 커스텀 인앱·인웹 메시지 템플릿 단독 구축(브릿지 API 연동·성과 집계), <strong>Nunjucks + Gulp + SCSS</strong> 템플릿 빌드 파이프라인, EM(이메일 마케팅) 템플릿</td>
+          </tr>
+          <tr>
+            <td class="cat">아키텍처 · 빌드</td>
+            <td class="items"><strong>pnpm workspace 모노레포</strong>(앱 6개 + 공용 패키지), <strong>FSD</strong>(app/entities/features/widgets/shared) + eslint-plugin-boundaries, <strong>SC / BLC / UI 3계층 컴포넌트 컨벤션</strong> 설계(App Router), <strong>Lit + Rollup 웹 컴포넌트</strong> 번들링, ESLint · Prettier · Stylelint</td>
+          </tr>
+          <tr>
+            <td class="cat">외부 연동</td>
+            <td class="items">Mapbox GL, Google Maps(+ Plus Code), Supabase, Hono, ioredis, PayPal, react-pdf, Swiper</td>
+          </tr>
+          <tr>
+            <td class="cat">AI 활용</td>
+            <td class="items">AI 코딩 에이전트용 <strong>기술 지식 문서(tech knowledge) 체계 구축</strong>, 리포지토리 스킬 규칙 정비, AI 요약·생성형 프로모션 기능 FE 구현</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ═══ 타임라인 ═══ -->
+  <section>
+    <div class="sec-head">
+      <span class="mark">03 / Timeline</span>
+      <h2>경력 아크 — 역할이 확장된 4단계</h2>
+    </div>
+    <p class="lede">
+      역할 범위가 넓어진 흐름입니다. 막대는 해당 시기의 업무량 비중을 나타냅니다.
+    </p>
+
+    <div class="era">
+      <div class="era-spine">
+        <span class="yr">2022 – 2023</span>
+        <div class="bar"><i style="width:68%"></i></div>
+      </div>
+      <div class="era-body">
+        <span class="role">퍼블리싱 · 운영 대응</span>
+        <p>
+          프리비아 항공·숙소 영역의 마크업과 운영 이슈 대응이 중심이었습니다.
+          GNB·햄버거 메뉴·퀵서치·헤더 같은 공통 영역, 크로스브라우징 오류,
+          항공 FAQ·수하물 규정 같은 정책 반영 작업을 담당했습니다.
+        </p>
+        <p>
+          이 시기 첫 개발성 과제로 <strong>항공 오마카세 v1.0</strong>과 신규 바우처(the Red ST) 출시 대응에 참여했습니다.
+        </p>
+      </div>
+    </div>
+
+    <div class="era">
+      <div class="era-spine">
+        <span class="yr">2024</span>
+        <div class="bar"><i style="width:98%"></i></div>
+      </div>
+      <div class="era-body">
+        <span class="role">대량 전시 · 컴포넌트 개발 진입</span>
+        <p>
+          연간 처리량이 3배로 뛴 해입니다. 항공사·카드사 제휴 기획전과 EM(이메일 마케팅) 템플릿을
+          대량으로 제작하며 반복 작업의 처리 속도를 끌어올렸습니다.
+        </p>
+        <p>
+          동시에 <strong>프리비아 해외패키지 신규 프로젝트 구축</strong>(2024-07~)에 초기 구조 설계부터 참여해
+          서버 컴포넌트 / 비즈니스 로직 컴포넌트 / 순수 UI를 나누는 <strong>3계층 컨벤션</strong>을 세우고,
+          서비스별로 흩어져 있던 메인 컴포넌트를 <strong>공용 디자인 시스템 패키지</strong>로 승격했습니다.
+          자동 VOID 기능, GA 이벤트 개발과 함께 퍼블리싱에서 개발로 무게중심을 옮긴 해입니다.
+        </p>
+      </div>
+    </div>
+
+    <div class="era">
+      <div class="era-spine">
+        <span class="yr">2025</span>
+        <div class="bar"><i style="width:100%"></i></div>
+      </div>
+      <div class="era-body">
+        <span class="role">프론트엔드 개발 전환</span>
+        <p>
+          투어비스 투어&amp;티켓 리포지토리 첫 커밋(2025-01) 이후 그 해에만 <strong>951건</strong>을 커밋했습니다.
+          투어&amp;티켓 상품상세·상품설명·이용후기·옵션선택을 PC/MO 양쪽으로 재구축하는 대형 과제를 담당했습니다.
+        </p>
+        <p>
+          유니버설 스튜디오 재팬 패스 상품군(내게 맞는 패스 찾기·비교함·입장시간·추가옵션)을 전담했고,
+          네이버여행 제휴 예약 플로우, 쿠폰·바우처 상품화, 픽업/드롭 구글맵 연동을 함께 진행했습니다.
+        </p>
+        <p>
+          같은 해 3~4월에는 <strong>프리비아 투어&amp;티켓 메인을 레거시에서 Next.js App Router로 전면 리팩토링</strong>했습니다.
+          투어비스와 프리비아 두 브랜드의 프런트를 동시에 맡기 시작한 시점입니다.
+        </p>
+        <p>
+          연초부터는 <strong>Braze 커스텀 인앱·인웹 메시지 템플릿</strong>을 단독으로 구축해
+          두 브랜드가 함께 쓰는 마케팅 메시지 자산을 만들었습니다.
+        </p>
+      </div>
+    </div>
+
+    <div class="era">
+      <div class="era-spine">
+        <span class="yr">2026</span>
+        <div class="bar"><i style="width:42%"></i></div>
+      </div>
+      <div class="era-body">
+        <span class="role">아키텍처 · 품질 · 글로벌</span>
+        <p>
+          기능 구현을 넘어 <strong>서비스 품질 지표</strong>를 직접 다루는 단계입니다.
+          SEO(canonical URL·H1 태그·noindex·사이트맵), LCP 성능 개선, 이미지 ratio 최적화,
+          프론트 API 요청 로그 포맷 규격화를 주도했습니다.
+        </p>
+        <p>
+          <code>server-only</code> 위반과 환경변수 중복 문제를 리팩토링해 서버 전용 값의 클라이언트 노출을 차단했고,
+          AI 요약·생성형 프로모션 FE, 구글 TTD 글로벌 채널, 취소/환불 정책 고도화를 담당했습니다.
+        </p>
+        <p>
+          프리비아 쪽에서는 <strong>예약상세 이용일 변경(다이나믹 프라이싱)</strong>을 계획서부터 구현까지 맡았고,
+          이용후기·포토이용후기 섹션 신규 구축, 검색 Extended API 마이그레이션, 현대카드 바우처·선할인 정책을 진행했습니다.
+          Next.js와 Nuxt 2를 오가며 <strong>두 브랜드 · 네 개 코드베이스</strong>를 동시에 다뤘습니다.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 대표 프로젝트 ═══ -->
+  <section>
+    <div class="sec-head">
+      <span class="mark">04 / Projects</span>
+      <h2>대표 프로젝트</h2>
+    </div>
+    <p class="lede">
+      담당한 과제 중 기술적 비중이 컸던 7개 영역입니다.
+      각 영역의 세부 구현은 다음 <strong>05 / Deep Dive</strong>에서 16건으로 나눠 정리했습니다.
+    </p>
+
+    <div class="projects">
+
+      <article class="proj">
+        <h3>컴포넌트 아키텍처 · 공용 디자인 시스템 <span style="font-size:12px;font-weight:400;color:var(--ink-3)">— 팀이 따르는 규칙을 만든 작업</span></h3>
+        <ul>
+          <li>프리비아 해외패키지 신규 구축에 초기 구조 설계부터 참여 — App Router에서 <strong>서버 컴포넌트(SC) / 비즈니스 로직 컴포넌트(BLC) / 순수 UI</strong>로 역할을 나누는 3계층 컨벤션을 정의해 클라이언트 경계를 한 겹으로 고정</li>
+          <li>서비스마다 중복 구현되던 메인 컴포넌트를 공용 UI 패키지로 승격 — 현재 패키지·투티·호텔·항공·공통 <strong>5개 앱이 공유</strong>(PC 55 · MO 56종), Storybook 스토리 109개로 상태별 렌더 문서화</li>
+          <li>패키지 퀵서치를 Lit + Rollup 단일 번들 <strong>웹 컴포넌트</strong>로 분리해 React를 쓰지 않는 페이지에도 스크립트 태그만으로 삽입 가능하게 구현</li>
+          <li>투어비스 그룹상품에서는 상품 ID별 Redux 브랜치로 전역 상태 오염을 차단하는 등, 재사용과 격리를 함께 만족시키는 구조를 반복해서 설계</li>
+        </ul>
+      </article>
+
+      <article class="proj">
+        <h3>투어&amp;티켓 상품상세 · 옵션선택 전면 재구축</h3>
+        <ul>
+          <li>투어비스·프리비아 두 브랜드의 상품상세를 PC/MO 동시에 재구축 — 상품설명, 이용후기, 코스소개, 옵션비교, 요약아이콘, 플로팅 예약 박스</li>
+          <li>옵션 선택 → 추가옵션 → 증정 프로모션 → 예약하기로 이어지는 다단계 상태 플로우 설계 및 엣지 케이스 정리</li>
+          <li>상품 그룹핑(여러 상품을 하나로 묶어 판매) 도입에 따른 상세·예약·리뷰 집계·GA 데이터 구조 대응</li>
+        </ul>
+      </article>
+
+      <article class="proj">
+        <h3>유니버설 스튜디오 재팬(USJ) 패스 상품 도메인 전담</h3>
+        <ul>
+          <li>‘내게 맞는 패스 찾기’ 필터 — 아이 키·스릴·에어리어 일치율 기반 추천 및 정렬 로직</li>
+          <li>입장시간 회차 선택, 어트랙션/에어리어 정보 매핑, 패스 비교함, 입고 알림 신청</li>
+          <li>익스프레스 패스 다이나믹 프라이싱 분기 처리 및 콘텐츠 하드코딩 매핑 운영</li>
+        </ul>
+      </article>
+
+      <article class="proj">
+        <h3>SEO · 성능 개선</h3>
+        <ul>
+          <li>투티 상품상세 SEO 최적화 — canonical URL, 상품명 H1 태그 적용, 판매불가 페이지 noindex 처리, 사이트맵 추가</li>
+          <li>구글 검색결과에 상품 대표가·재고 여부가 노출되도록 구조화 데이터 대응</li>
+          <li>상품상세 LCP 퍼포먼스 개선, 썸네일 파라미터를 활용한 이미지 ratio 최적화</li>
+        </ul>
+      </article>
+
+      <article class="proj">
+        <h3>외부 채널 · 글로벌 연동</h3>
+        <ul>
+          <li>네이버여행 — 예약자 정보 입력 폼, 영문명 필드, 비회원 예약조회, 구글맵 주소 연동, 알림톡 연계</li>
+          <li>GetYourGuide(GYG) — 이용후기 번역본 노출, 바우처 안내, 예약 메모 픽업/드롭 지점을 구글맵 Plus Code로 저장</li>
+          <li>구글 TTD 영문 채널, 지마켓·스마트스토어, 트립닷컴 상품의 옵션·취소규정 대응</li>
+        </ul>
+      </article>
+
+      <article class="proj">
+        <h3>예약 · 결제 정책 구현</h3>
+        <ul>
+          <li>옵션 단위 취소·환불 기능을 투어비스/프리비아 양쪽 프론트에 구현</li>
+          <li>취소/환불 정책 고도화 — V2 API의 조건·수수료 문구 반영 및 타임라인 렌더링, 수수료 오름차순 정렬</li>
+          <li>예약 시 마케팅 수신 동의 정책 변경 대응 — 전체동의에서 선택 항목 분리</li>
+          <li>현대카드 바우처·쿠폰·이용권 등 혜택 표기와 할인 분개 처리</li>
+        </ul>
+      </article>
+
+      <article class="proj">
+        <h3>아키텍처 · 개발 생산성</h3>
+        <ul>
+          <li><code>server-only</code> 위반과 환경변수 중복을 리팩토링해 서버 전용 값의 클라이언트 노출 차단</li>
+          <li>프론트 API 요청 로그 포맷 규격화로 장애 추적 기반 마련</li>
+          <li>투티 검색 스크립트 프록시 세팅, 검색 API 엔드포인트 전환</li>
+          <li>AI 코딩 에이전트가 참조할 기술 지식 문서 체계를 직접 작성·운영</li>
+        </ul>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ═══ 심층 기술 상세 ═══ -->
+  <section>
+    <div class="sec-head">
+      <span class="mark">05 / Deep Dive</span>
+      <h2>주요 과제 16건 — 기술 상세</h2>
+    </div>
+    <p class="lede">
+      직접 구현한 코드와 작성한 설계 문서를 기준으로 정리했습니다.
+      「규모」의 파일 수·줄 수·커밋 수는 담당 영역의 크기를 가늠하기 위한 집계값입니다.
+      <br><strong>01–08은 투어비스 투어&amp;티켓</strong>, <strong>09–14는 프리비아 투어&amp;티켓</strong>,
+      <strong>15는 두 브랜드 공통 마케팅 메시지 템플릿</strong>,
+      <strong>16은 프리비아 해외패키지</strong>입니다.
+    </p>
+
+    <div class="deeps">
+
+      <!-- 1 -->
+      <article class="deep">
+        <div class="deep-head">
+          <span class="repo">투어비스 투어&amp;티켓</span>
+          <h3><span class="idx">01</span>USJ 전용 상품 페이지 구축 · 맞춤 패스 필터 · 어트랙션 그룹핑</h3>
+        </div>
+        <dl>
+          <dt>배경</dt>
+          <dd>
+            유니버설 스튜디오 재팬 패스는 <strong>권종(익스프레스 4/5/7/8) × 어트랙션 조합 × 입장시간 × 에어리어 확약권</strong>이 얽혀
+            일반 상품상세 UI로는 선택이 불가능한 상품군입니다. 일반 옵션 플로우와 분리된 <strong>전용 페이지·전용 상태 트리</strong>를 세웠습니다.
+          </dd>
+          <dt>구현</dt>
+          <dd>
+            <ul>
+              <li><strong>전용 옵션 선택 페이지</strong> — 데이터 로딩·초기화·이벤트·모달·상태·스크롤락을 훅 6개로 분리해
+                단일 컴포넌트가 비대해지지 않게 했습니다. 모달만 캘린더·입장시간·패스 상세·비교하기·확인·추가옵션·재고알림·스와이프 가이드 8종.</li>
+              <li><strong>「내게 맞는 패스 찾기」 필터</strong> — ① 동반 아동 키 3구간(102–121 / 122–131 / 132cm 이상)
+                ② 슈퍼 닌텐도 월드 확약권 포함·미포함 ③ 인기 어트랙션 다중 선택 ④ 익스프레스 권종.
+                기본 접힘 배너로 두고 인라인 필터·풀 폼 두 진입점을 공유 컴포넌트 하나로 처리했습니다.</li>
+              <li><strong>필터·정렬 로직</strong> — <code>filterAndSortPasses</code>가 인기 어트랙션 <em>100% 일치</em> →
+                아이 키 조건을 만족하는 어트랙션 3개 이상 → 닌텐도 확약권 유무 → 권종 접두어 순으로 걸러낸 뒤
+                <code>calculateFilterMatchScore</code>의 일치도 점수로 재정렬합니다.</li>
+              <li><strong>어트랙션 그룹핑·정규화</strong> — 옵션 API와 상품상세 매핑의 표기가 달라(™ 유무, 띄어쓰기, 영문 병기, 「[접수시간]」 접두)
+                같은 어트랙션이 다른 것으로 잡히는 문제가 있었습니다. 어트랙션↔에어리어 매핑 테이블과 역매핑을 만들고
+                공백 제거 후 재매칭하는 폴백을 둬 표기 흔들림을 흡수했습니다.
+                에어리어 정렬은 <code>compareUsjArea</code>로 슈퍼 닌텐도 월드 → 해리 포터 → 그 외 순서를 고정했습니다.</li>
+              <li>예외 처리 — 시작시간만 있는 타임슬롯(명탐정 코난), 어트랙션명이 비어 오는 EXP 옵션,
+                MO <code>/option</code> 슬러그 URL 404, 비회원 <code>/reserve</code> 중간 페이지 404.</li>
+            </ul>
+          </dd>
+          <dt>규모</dt>
+          <dd><span class="num">132</span>개 파일 · 약 <span class="num">31,700</span>줄 · 관련 커밋 <span class="num">500</span>건 이상.
+            Jest 테스트 4종(옵션 slice 2종, 재고 알림, 옵션 리셋).</dd>
+        </dl>
+      </article>
+
+      <!-- 2 -->
+      <article class="deep">
+        <div class="deep-head">
+          <span class="repo">투어비스 투어&amp;티켓</span>
+          <h3><span class="idx">02</span>일본 버스투어 매진일 대체상품 추천</h3>
+        </div>
+        <dl>
+          <dt>배경</dt>
+          <dd>
+            일본 근교 버스투어는 성수기 매진이 잦은데, 기존 DATE 상품 캘린더는 가용일 응답에 없는 날짜를 <strong>아예 비활성</strong>으로 막았습니다.
+            사용자는 매진 여부를 확인할 수도, 대안을 볼 수도 없이 이탈했습니다.
+          </dd>
+          <dt>구현</dt>
+          <dd>
+            <ul>
+              <li><strong>계획서를 직접 작성</strong>했습니다(307줄) — 캘린더 정책, Case 분기, 데이터 소스, 리스크·오픈 이슈,
+                지역별 대상 상품 ID 부록까지. 기획 원문을 프런트 관점 요구사항으로 번역하는 작업이 절반이었습니다.</li>
+              <li><strong>캘린더</strong> — 운영 시트에 등록된 상품에 한해 예약 가능 기간 <em>전체</em>를 렌더하고 매진일도 선택 가능하게 열었습니다.
+                시트 미등록 상품은 기존 동작을 그대로 유지해 회귀를 차단했습니다.</li>
+              <li><strong>Case 분기</strong> — 날짜 선택 시 원 상품의 옵션 API를 호출해 <em>판매 가능한 옵션</em> 유무로 나눕니다.
+                있으면 기존 옵션 리스트, 없으면 「선택한 날짜는 마감되었습니다」 + <strong>「{M}월 {D}일 예약 가능한 인기 상품 모음」</strong>에
+                해당 날짜에 실재고가 있는 후보만 시트 우선순위로 노출합니다. 가용일 API만으로는 “날짜는 열려 있는데 옵션은 전부 마감”을
+                잡지 못해 옵션 기반 판별로 설계했습니다.</li>
+              <li><strong>다건 조회 최적화</strong> — 후보 상품마다 옵션 API를 호출해야 해서 <code>(productId, date)</code> 키 캐시를 두고,
+                <code>useLayoutEffect</code>로 <em>paint 전에</em> 캐시를 반영해 레이아웃 시프트를 막았습니다.
+                결과 확정 플래그를 따로 둬 빈 목록이 한 프레임 스치는 현상도 제거했습니다.</li>
+              <li>그룹 상품은 대상이 아니므로 PC·MO 진입점 전부에서 명시적으로 제외했습니다.</li>
+            </ul>
+          </dd>
+          <dt>규모</dt>
+          <dd>후쿠오카·오사카·삿포로·오키나와·나고야 <span class="num">5</span>개 지역 상품군.
+            PC/MO 양쪽 캘린더·옵션 모달·추천 카드·캐시 <span class="num">14</span>개 파일.</dd>
+        </dl>
+      </article>
+
+      <!-- 3 -->
+      <article class="deep">
+        <div class="deep-head">
+          <span class="repo">투어비스 투어&amp;티켓</span>
+          <h3><span class="idx">03</span>그룹상품 페이지 구축 — 페이지 이탈 없는 묶음상품 예약</h3>
+        </div>
+        <dl>
+          <dt>배경</dt>
+          <dd>
+            여러 상품을 하나로 묶어 파는 그룹상품은 기존에 <strong>새 탭 링크·전면 전환</strong>으로만 개별 상품에 접근했습니다.
+            묶음 안에서 비교하다 매번 페이지를 떠나야 하니 전환이 끊겼습니다. 상세 안에서 안내 확인부터 예약까지 끝내도록 재설계했습니다.
+          </dd>
+          <dt>구현</dt>
+          <dd>
+            <ul>
+              <li><strong>상태 오염 차단이 가장 어려운 부분</strong>이었습니다. MO는 단일 상품의 옵션 플로우 컴포넌트를 그대로 쓰되,
+                전역 옵션 slice 3종이 오염되지 않도록 <code>groupProductOptionBooking</code> 슬라이스를 만들어
+                <strong>매핑 상품 ID별 브랜치</strong>에 동일 reducer를 중첩하고, 액션은 전달 함수로만 해당 브랜치에 흘려보냈습니다.
+                Context Provider로 컴포넌트가 “전역이냐 그룹 브랜치냐”를 구분하게 해 여러 매핑 상품을 반복 예약해도 상태가 섞이지 않습니다.</li>
+              <li><strong>PC는 전용 레이아웃</strong>(한 화면 스크롤·아코디언)과 로컬 상태로 분리해, 단일 상품 Redux와 아예 접점을 없앴습니다.</li>
+              <li><strong>옵션 카드 레이어 4종</strong>(코스소개 · 주요 이용안내 · 취소/환불 · 상품 상세정보)이
+                모두 같은 상품 API 응답을 쓰기 때문에, <code>product_id</code>당 1회만 패치하는 캐시를 두고 네 팝업이 동일 엔트리를 재사용합니다.</li>
+              <li><strong>이용안내 탭</strong>은 칩 탭(Swiper) + 본문 전용 scrollspy 구성. 탭 줄을 세로 스크롤 루트 <em>밖</em> 형제 노드로 빼
+                가로 스와이프와 본문 스크롤이 서로 먹지 않게 하고, 탭이 한 줄에 들어갈 때/넘칠 때 정렬 규칙을 분기했습니다.</li>
+              <li><strong>정책 처리</strong> — 그룹 API에 환불 필드가 없어 대표 상품의 환불 규정을 임시 소스로 쓰고
+                “각 옵션 카드에서 취소/환불 규정을 꼭 확인해 주세요” 고지를 함께 노출, 백엔드 필드 도입 시 교체하도록 문서에 남겼습니다.</li>
+              <li>부수 정합 — 옵션 중 일부 회차만 매진인데 옵션 전체를 매진으로 보던 버그, 장바구니·최근 본 상품·공급사 채팅에 그룹 ID 전달,
+                쿠폰 할인가는 개별 상품 ID 기준 적용, 판매종료 알럿 잔상 제거, USJ 매핑 상품은 전용 UI가 있어 페이지 전환으로 분기.</li>
+            </ul>
+          </dd>
+          <dt>규모</dt>
+          <dd>그룹 전용 파일 <span class="num">28</span>개 · <span class="num">5,472</span>줄 · 커밋 <span class="num">123</span>건.
+            요구사항·API 레퍼런스 문서 <span class="num">528</span>줄과 19단계 구현 로그를 남겼습니다.</dd>
+        </dl>
+      </article>
+
+      <!-- 4 -->
+      <article class="deep">
+        <div class="deep-head">
+          <span class="repo">투어비스 투어&amp;티켓</span>
+          <h3><span class="idx">04</span>취소·환불 규정 V2 및 옵션별 취소정책</h3>
+        </div>
+        <dl>
+          <dt>배경</dt>
+          <dd>
+            V1 환불 규정은 상품 단위 고정 문구였습니다. V2는 <strong>옵션마다 정책이 갈리고</strong>, 기준시점·수수료 유형·과금 단위·통화가
+            제각기 내려옵니다. 상품상세뿐 아니라 <strong>예약·결제·주문상세·취소</strong> 화면까지 같은 규칙으로 보여야 했습니다.
+          </dd>
+          <dt>구현</dt>
+          <dd>
+            <ul>
+              <li><strong>표시용 변환 계층</strong>을 따로 만들었습니다. API 응답을 화면이 그대로 쓸 수 있는 행·옵션·조건그룹 타입으로 변환하고,
+                정책을 <em>환불불가 / 환불가능 / 조건부</em>로 분류한 뒤 상품 기본 정책과 같은 옵션끼리 묶습니다.</li>
+              <li><strong>문구 생성</strong> — 수수료 유형(정률·정액), 과금 단위(건당·인당), 통화 심볼 5종을 조합해 표기를 만들되,
+                API가 조건·수수료 문구를 내려주면 그것을 우선합니다. 백엔드 문안이 바뀌어도 프런트 배포 없이 반영됩니다.</li>
+              <li><strong>정렬 규칙</strong> — 「취소 수수료 없음 → 수수료 오름차순 → 환불불가」가 되도록 정렬키에 ±Infinity를 배치했습니다.
+                수수료 테이블을 눈으로 훑을 때 손해 순서가 자연스럽게 읽힙니다.</li>
+              <li><strong>기준시점 정합</strong> — 예약일 기준/이용일 기준 표기를 구분하고,
+                시간 단위 정책에서 “이후 1일”로 잘못 나가던 표기를 “24시간 이후”로 교정했습니다.
+                타임라인 HTML이 내려오는 경우 별도 렌더 경로를 추가했습니다.</li>
+              <li><strong>V1/V2 폴백</strong> — 주문 API에 V2 상세가 있으면 V2, 없으면 V1을 유지하도록 판별을 한 곳에 모아
+                예약·결제·주문/취소 화면 전체가 같은 기준으로 동작하게 했습니다.
+                전체 환불 불가 옵션은 옵션 카드에 안내를 띄워 결제 전에 알 수 있게 했습니다.</li>
+            </ul>
+          </dd>
+          <dt>규모</dt>
+          <dd>변환 유틸 <span class="num">2</span>종 · 상품상세/예약/결제/주문/취소 <span class="num">13</span>개 화면 파일 동시 수정.</dd>
+        </dl>
+      </article>
+
+      <!-- 5 -->
+      <article class="deep">
+        <div class="deep-head">
+          <span class="repo">투어비스 투어&amp;티켓</span>
+          <h3><span class="idx">05</span>네이버여행 예약자 — 예약메모 입력 및 예약상세 페이지 구축</h3>
+        </div>
+        <dl>
+          <dt>배경</dt>
+          <dd>
+            네이버여행에서 들어온 예약자는 <strong>투어비스 회원이 아닙니다.</strong> 로그인도 마이페이지도 없이 알림톡 링크 하나로 들어와
+            예약 정보를 채우고 예약 내역을 확인해야 합니다. 회원 전제로 짜인 기존 주문 화면을 그대로 쓸 수 없어 전용 동선을 새로 구축했습니다.
+          </dd>
+          <dt>구현</dt>
+          <dd>
+            <ul>
+              <li><strong>예약정보 입력 페이지</strong> — 서버 컴포넌트에서 주문 템플릿을 먼저 조회해 폼을 구성하고,
+                유효하지 않은 링크는 「알림톡 주소를 확인해 주세요」 화면으로 분기합니다.
+                폼 상태·동의 처리·저장·제출 상태를 훅 4개로 나누고, 저장은 Server Action으로 처리했습니다.</li>
+              <li><strong>어댑터 계층</strong> — 네이버 응답 스키마와 폼 스키마가 달라 변환 어댑터를 두고 <em>단위 테스트</em>로 고정했습니다.
+                동의 체크박스·저장 버튼·어댑터 3종에 Jest 테스트를 붙였습니다.</li>
+              <li><strong>개인정보 처리</strong> — 네이버에서 이미 받은 동의에 근거한 절차임을 명시하고,
+                개인정보·민감정보 동의 모달을 분리해 별도 고지했습니다.</li>
+              <li><strong>N개 옵션 대응</strong> — 한 주문에 옵션이 여러 개일 때 payload가 깨지던 문제를 옵션 배열 기준으로 재구성했습니다.</li>
+              <li><strong>예약상세 페이지</strong> — 비회원 토큰 기반. 네이버 응답을 기존 주문상세 컴포넌트가 쓰는 형태로 변환해
+                <em>컴포넌트를 재사용</em>하되, 채널 특성상 맞지 않는 취소·환불 정보, 「같은 상품 예약하기」는 제거했습니다.
+                상품상세 링크는 이용후기 등록 고객에게만 열고, 증정 상품처럼 링크가 없는 경우 엉뚱한 페이지로 보내지 않도록 처리했습니다.</li>
+              <li>후기 등록에 도시·공급사 식별자 추가, 타사 구매 배지, 스마트스토어 주문 분기, 바우처 미들웨어,
+                GYG 픽업 지도 연동까지 채널 확장을 이어받았습니다.</li>
+            </ul>
+          </dd>
+          <dt>규모</dt>
+          <dd><span class="num">32</span>개 파일 · <span class="num">4,533</span>줄 · 커밋 <span class="num">80</span>건.</dd>
+        </dl>
+      </article>
+
+      <!-- 6 -->
+      <article class="deep">
+        <div class="deep-head">
+          <span class="repo">투어비스 투어&amp;티켓</span>
+          <h3><span class="idx">06</span>USJ 다이나믹 프라이싱 · 유동 추가옵션 정책</h3>
+        </div>
+        <dl>
+          <dt>배경</dt>
+          <dd>
+            USJ 패스는 정찰가가 아니라 <strong>이용일·회차·수량에 따라 가격이 실시간으로 바뀝니다.</strong>
+            게다가 조합에 따라 아예 판매 불가인 구간이 있어, “가격을 다시 물어보고 · 못 파는 경우를 구분”하는 경로가 필요했습니다.
+          </dd>
+          <dt>구현</dt>
+          <dd>
+            <ul>
+              <li><strong>조회 훅</strong> — 옵션에 다이나믹 프라이싱 플래그가 켜진 경우에만 (이용일 · 라벨 · 회차 · 수량)으로 서버 액션을 호출합니다.
+                응답이 판매 불가면 「이용 조건 미충족」 상태로 전환해 금액 대신 사유를 보여 줍니다.
+                수량 0, 상품 ID 없음, 정적가 상품은 조기 반환해 불필요한 호출을 막았습니다.</li>
+              <li><strong>PC·MO 상태 동기화</strong> — 같은 훅이 MO 옵션 상세 슬라이스와 PC 상품 상태 슬라이스에 동일 payload를 동시에 디스패치합니다.
+                채널마다 다른 상태 트리를 쓰면서도 로딩·가격·판매불가 표시가 한 소스에서 갈라져 나갑니다.</li>
+              <li><strong>유동 추가옵션 정책</strong> — 수량형 추가옵션의 적용 횟수를 <em>N = ⌈Q ÷ V⌉</em>(Q: 대상 라벨 수량 합, V: 과금 스텝)로 계산해
+                라벨 수량이 바뀌면 추가옵션 수량·금액이 함께 따라오게 했습니다. 단가는 정책으로 건드리지 않습니다.</li>
+              <li><strong>UX 판단</strong> — 정책이 켜지면 스테퍼로 수량을 못 바꾸지만, 이를 “비활성”으로 회색 처리하니
+                고를 수 없는 옵션처럼 보였습니다. 라벨 재고로 막힌 경우만 회색을 쓰고 정책으로 고정된 카드는 흰 배경을 유지하도록 스타일 규칙을 나눴습니다.</li>
+              <li>정책 적용 후 라벨 수량을 조작하면 선택 상태 참조가 끊겨 가격 합산에서 터지던 버그를,
+                선택 항목 정렬 + 합산 시 필터 두 단계로 잡고 Jest 테스트로 고정했습니다.</li>
+              <li>이용일 변경 시 재계산 시나리오는 <span class="num">933</span>줄 계획서로 별도 정리했습니다.</li>
+            </ul>
+          </dd>
+          <dt>규모</dt>
+          <dd>BFF 라우트 · 서버 액션 · 도메인 유틸 · Redux 슬라이스 4종 · PC/MO 수량 UI 6종. 구현 요약 문서 별도.</dd>
+        </dl>
+      </article>
+
+      <!-- 7 -->
+      <article class="deep">
+        <div class="deep-head">
+          <span class="repo">투어비스 · 글로벌</span>
+          <h3><span class="idx">07</span>EN 글로벌 페이지 구축 및 예약·결제 PayPal 연동</h3>
+        </div>
+        <dl>
+          <dt>배경</dt>
+          <dd>
+            구글 맵 TTD로 유입되는 해외 고객을 받기 위한 <strong>영어 전용 · 비회원 예약 · PayPal(USD) 결제</strong> 서비스입니다.
+            국내 서비스는 로그인·쿠폰·포인트·회원등급이 전제라, 그 전제를 걷어낸 별도 경로가 필요했습니다.
+          </dd>
+          <dt>구현</dt>
+          <dd>
+            <ul>
+              <li><strong>PRD·설계 가이드·구현 계획서를 직접 작성</strong>한 뒤 착수했습니다. 타깃·언어 정책·제외 기능·라우팅 전략·결제 통화까지
+                문서에서 결론을 내고 코드로 옮겼습니다.</li>
+              <li><strong>라우트 16개</strong> — 상품상세 · 검색 · 예약 · 예약메모 · 예약완료 · 주문상세 · 주문취소 · 취소정보 · 문의 · 비회원 로그인 ·
+                토큰 설정 route handler. 회원 전용 진입 체크를 걷어내고 게스트 정보(이름·이메일·전화)를 직접 수집,
+                주문번호+이메일로 조회하는 게스트 주문 조회를 뒀습니다.</li>
+              <li><strong>PayPal 결제</strong> — 주문 생성 단계에서 USD 금액을 소수 2자리로 고정해 purchase unit을 만들고,
+                승인 후 Server Action이 결제사 캡처 API를 호출합니다. 결제 UI는 시트·브랜디드 체크아웃·CTA·로고로 쪼개
+                모바일/데스크톱 배치를 따로 조립할 수 있게 했습니다.</li>
+              <li><strong>에러 분기</strong> — 가예약 실패까지 PayPal 제네릭 알럿으로 덮여 원인을 알 수 없던 문제를 분리하고,
+                사전 인증 실패 시 결제가 진행되지 않도록 차단했습니다. 결제 E2E 테스트를 붙였습니다.</li>
+              <li>리뷰는 GetYourGuide 연동, 상품상세 SEO 메타·JSON-LD 적용, 다이나믹 요금 조회·배지 연동,
+                모바일 예약 CTA 문구 정리, <code>react-pdf</code> SSR 오류 수정까지 상세~완료 전 구간을 맡았습니다.</li>
+              <li>Next.js 16 · React 19 · FSD 레이어(app / entities / features / widgets / shared)에
+                <code>eslint-plugin-boundaries</code>로 의존 방향을 강제한 구조 위에서 작업했습니다.</li>
+            </ul>
+          </dd>
+          <dt>규모</dt>
+          <dd>EN 라우트 <span class="num">16</span>개 · PayPal 전용 파일 <span class="num">9</span>개 ·
+            결제 관련 커밋 <span class="num">42</span>건. 설계 문서 3종.</dd>
+        </dl>
+      </article>
+
+      <!-- 8 -->
+      <article class="deep">
+        <div class="deep-head">
+          <span class="repo">투어비스 · 글로벌</span>
+          <h3><span class="idx">08</span>정적 프로모션 번들 뷰 페이지 구축</h3>
+        </div>
+        <dl>
+          <dt>배경</dt>
+          <dd>
+            마케팅 프로모션 페이지는 생성기가 HTML·CSS·JS 번들로 뽑아냅니다. 이걸 매번 React 컴포넌트로 옮기면 배포가 느리고,
+            그냥 정적 파일로 띄우면 <strong>GNB·푸터·SEO가 빠집니다.</strong> 둘 다 만족하는 로더를 만들었습니다.
+          </dd>
+          <dt>구현</dt>
+          <dd>
+            <ul>
+              <li><strong>번들 규격을 문서로 먼저 고정</strong>했습니다(475줄) — 폴더 구조(메타 · 본문 · 스타일 · 스크립트 · 이미지),
+                템플릿별 루트 클래스 스코프 규칙, 금지 항목(문서 태그·인라인 스타일·Tailwind CDN·루트 절대경로),
+                메타 스키마(제목 30자 이상, 설명 120~150자, OG 이미지 상대경로, 구조화 데이터 배열).
+                생성기 쪽이 이 규격만 지키면 <em>복사만으로 배포</em>됩니다.</li>
+              <li><strong>서버 로더</strong> — 번들 파일 4개를 병렬로 읽고, 스크립트는 없으면 <code>null</code>로 폴백합니다.</li>
+              <li><strong>경로 재작성</strong> — 번들 안의 <code>images/…</code> 상대경로를 CSS <code>url()</code>과 HTML <code>src</code> 양쪽에서
+                public 절대경로로 치환합니다. 배포 물리 경로가 바뀌어도 번들을 손대지 않아도 됩니다.</li>
+              <li><strong>렌더</strong> — 스타일·본문을 주입하고 스크립트는 <code>next/script</code>의 <code>afterInteractive</code>로 실행해
+                하이드레이션과 충돌하지 않게 했습니다. 메타는 <code>generateMetadata</code>가 번들 메타를 읽어 구성하므로
+                프로모션마다 SEO·OG·JSON-LD가 자동으로 붙습니다.</li>
+              <li>마케팅 캠페인 경로와 여행 가이드 경로 <strong>두 계열</strong>을 지원하고, 신규 건은 여행 가이드로 유도했습니다.
+                여행 가이드 쪽은 슬러그 SEO 레지스트리와 <code>sitemap.ts</code>를 붙여 프로모션이 늘어도 색인이 따라오게 했습니다.</li>
+            </ul>
+          </dd>
+          <dt>규모</dt>
+          <dd>현재 <span class="num">9</span>개 번들 운영 — 도쿄 · 오사카 · 후쿠오카 · 삿포로 · 나고야 · 오키나와 · 다낭 여행 가이드
+            + 도쿄 크로스셀 · 오사카 당일치기 교토 프로모션.</dd>
+        </dl>
+      </article>
+
+      <!-- 9 -->
+      <article class="deep">
+        <div class="deep-head">
+          <span class="repo">프리비아 투어&amp;티켓</span>
+          <h3><span class="idx">09</span>프리비아 투어&amp;티켓 메인 전면 리팩토링 — 레거시 → Next.js App Router</h3>
+        </div>
+        <dl>
+          <dt>배경</dt>
+          <dd>
+            프리비아 투티 메인은 레거시 스택으로 남아 있어 인벤토리 하나 바꾸는 데도 손이 많이 갔습니다.
+            <strong>2025년 3~4월에 걸쳐 PC·MO 메인을 Next.js App Router + Tailwind + Radix 기반으로 다시 세웠습니다.</strong>
+            프리비아 패키지·투어비스와 한 모노레포를 쓰는 구조라, 공용 패키지를 건드리지 않고 갈아끼우는 게 조건이었습니다.
+          </dd>
+          <dt>구현</dt>
+          <dd>
+            <ul>
+              <li><strong>퀵서치</strong> — PC·MO 각각 재구축. 최근 검색어 저장을 Server Action으로 옮기고,
+                검색어 없이 엔터·검색 버튼을 눌렀을 때 안내 다이얼로그를 띄우도록 했습니다.
+                입력 전 <code>init</code> 상태를 따로 둬 진입 시 불필요한 포커스가 가지 않게 했습니다.</li>
+              <li><strong>다이얼로그 체계</strong> — 여행지 전체보기·픽토그램 전체 카테고리를 독립형 Dialog / MO FullDialog로 분리했습니다.
+                서버·클라이언트 속성 불일치로 뜨던 하이드레이션 경고도 이 과정에서 정리했습니다.</li>
+              <li><strong>오마카세 개인화</strong> — 개인화 응답이 늦게 오면서 레이아웃이 밀리는 문제를 스켈레톤으로 잡았습니다(CLS).</li>
+              <li><strong>인벤토리·전시</strong> — 상품 전시 순서를 인벤토리 구분자 기준으로 재정렬하고,
+                운영에서 특정 인벤토리가 비어 내려올 때 화면이 깨지지 않도록 <em>빈 인벤토리를 생성해 채우는 폴백</em>을 넣었습니다.
+                전시 상품이 0개인 스와이퍼 영역은 아예 렌더하지 않습니다.</li>
+              <li><strong>배너·섹션</strong> — 상단 슬라이더, 좌/우/중앙 배너, 이벤트·프로모션 배너(오토플레이 주기 분리),
+                플로팅 배너, FAQ·상담 서비스·이용자 혜택, 상품 탭·슬라이더를 컴포넌트로 나눴습니다.</li>
+              <li><strong>모노레포 제약 대응</strong> — 패키지 빌드 시 경로가 깨지는 컴포넌트는 투티 전용으로 분리하고
+                공용 패키지 쪽에서는 GA 코드를 제거해 중복 수집을 막았습니다.</li>
+              <li><strong>디테일</strong> — 이미지 URL 확인에 실패해도 기본 이미지를 쓰도록 폴백을 통일하고,
+                상품 라벨 지역명 우선순위(국내는 도시→지역→국가, 해외는 국가+카테고리) 규칙을 정리했습니다.
+                이관 과정에서 누락·상이했던 GA 이벤트를 전수 대조해 맞췄습니다.</li>
+            </ul>
+          </dd>
+          <dt>규모</dt>
+          <dd>PC·MO 메인 컴포넌트 <span class="num">24</span>개 파일 신규 작성.
+            해당 기간(2025-03~04) 집중 커밋 <span class="num">70</span>여 건.</dd>
+        </dl>
+      </article>
+
+      <!-- 10 -->
+      <article class="deep">
+        <div class="deep-head">
+          <span class="repo">프리비아 투어&amp;티켓</span>
+          <h3><span class="idx">10</span>이용후기 · 포토이용후기 섹션 신규 구축</h3>
+        </div>
+        <dl>
+          <dt>배경</dt>
+          <dd>
+            프리비아 투티 상품상세에는 후기가 없었습니다. 투어비스 쪽 후기 시스템을 <strong>프리비아 브랜드로 가져오되</strong>,
+            상세가 레거시 라우트라 Tailwind를 못 쓰고 모듈 SCSS만 가능한 제약 아래 붙여야 했습니다.
+          </dd>
+          <dt>구현</dt>
+          <dd>
+            <ul>
+              <li><strong>분석·계획 문서를 먼저 썼습니다</strong> — API·로직 분석 622줄, 단계별 구축 계획 341줄, 포토후기 팝업 분석 178줄.
+                Phase 1(비회원 조회·표시)과 Phase 2(회원 연동·도움됨)를 나눠 회원 의존 없이 먼저 띄울 수 있게 설계했습니다.</li>
+              <li><strong>구조 원칙</strong> — 서버 컴포넌트는 패치, 클라이언트 컴포넌트는 인터랙션, 로직은 커스텀 훅으로 삼분했습니다.
+                후기 Server Action 8종(목록·집계·개수·포토, 각각 태그 분기 버전)을 만들고
+                실패 시 빈 배열·null을 반환하며 Sentry로 남기게 했습니다.</li>
+              <li><strong>인증 처리</strong> — 브랜드는 PRIVIA로 고정하고, 로그인 쿠키가 있으면 Bearer로 붙이되
+                <em>없어도 조회는 되도록</em> 선택적 인증으로 뒀습니다. 비로그인 사용자도 후기를 볼 수 있어야 하기 때문입니다.</li>
+              <li><strong>화면</strong> — 상단 평점·키워드 요약, 후기 리스트 무한스크롤, 포토후기 그리드와 스와이퍼 모달(PC/MO 별도),
+                번역하기, 「도움이 되었어요」 토글. 비로그인 상태에서 도움됨을 누르면 로그인 유도 컨펌을 띄우고,
+                GYG 같은 외부 채널 후기에는 도움됨 UI 자체를 숨겼습니다.</li>
+              <li><strong>정합·성능</strong> — PC 포토 팝업과 섹션의 도움됨 카운트를 동기화하고,
+                이미지를 용도별 타입(썸네일·정사각·와이드)으로 나눠 최적화했습니다.
+                모바일에서 모달을 닫으면 이전 스크롤 위치로 복귀하도록 처리했습니다.</li>
+              <li><strong>SEO</strong> — 후기 평점을 포함한 JSON-LD를 붙이고 헤딩 트리 구조를 정리했습니다.</li>
+              <li>최근에는 외부 채널 후기를 분리 노출하고, 채널 정렬을 프런트에서 <strong>백엔드로 이관</strong>했습니다.</li>
+            </ul>
+          </dd>
+          <dt>규모</dt>
+          <dd>PC/MO 후기·포토후기 컴포넌트와 훅·유틸·타입 <span class="num">40</span>여 개 파일.
+            자체 작성 설계·분석 문서 <span class="num">5</span>종 <span class="num">1,300</span>여 줄.</dd>
+        </dl>
+      </article>
+
+      <!-- 11 -->
+      <article class="deep">
+        <div class="deep-head">
+          <span class="repo">프리비아 투어&amp;티켓 예약·결제 · Nuxt 2 / Vue 2</span>
+          <h3><span class="idx">11</span>예약상세 이용일 변경 — 공급사 연동 + 차액 정산 플로우</h3>
+        </div>
+        <dl>
+          <dt>배경</dt>
+          <dd>
+            USJ 입장권·닌텐도 세트처럼 <strong>날짜마다 가격이 다른 상품</strong>은 이용일을 바꾸면 차액이 생깁니다.
+            공급사 API를 거쳐 변경을 신청하고, 차액이 양수면 결제를 먼저 받고, 음수면 운영이 환불하며,
+            결과는 <strong>비동기 웹훅으로 나중에</strong> 확정됩니다. 프런트가 그 사이의 모든 상태를 표현해야 했습니다.
+          </dd>
+          <dt>구현</dt>
+          <dd>
+            <ul>
+              <li><strong>작업 계획서 964줄을 직접 작성</strong>했습니다 — 8단계 플로우, 차액 부호별 분기표, 재진입 상태표,
+                백엔드 시퀀스 다이어그램, 기존 코드베이스 매핑, 재사용 가능한 패턴 정리까지.
+                FE 스펙 문서와 충돌하면 스펙을 따른다는 우선순위도 문서에 못박았습니다.</li>
+              <li><strong>플로우</strong> — 변경 가능일 조회 → 차액 미리보기 → 변경 신청(응답은 항상 대기 상태) →
+                차액이 양수면 결제 화면으로 즉시 이동, 아니면 「변경 처리 중」 → 상태 폴링(3~5초, 최대 60초) → 확정/실패.</li>
+              <li><strong>상품 하드코딩을 피했습니다</strong> — 대상 판별을 주문의 <code>reschedule_enabled</code> 플래그 하나로 일반화해,
+                공급사가 늘거나 자체 처리로 바뀌어도 프런트를 고치지 않아도 되게 했습니다.</li>
+              <li><strong>재진입 처리가 까다로웠습니다</strong> — 대기 상태에서 페이지를 다시 열면 결제가 필요한 건지
+                그냥 기다리면 되는 건지 구분이 안 됐습니다. 재진입 시 상태 API를 1회 조회하고
+                결제 필요 여부는 <em>서버 값을 우선</em>해 로컬 상태와 병합하도록 정리했습니다.</li>
+              <li><strong>타임아웃·late response 가드</strong> — 공급사 응답이 늦어 BFF가 먼저 끊기는 케이스에 가드를 넣고,
+                폴링 타임아웃 이후 늦게 도착한 응답이 화면을 되돌리지 않게 했습니다.</li>
+              <li><strong>금액 산식 보정</strong> — 추가결제·전체취소가 섞이면 예약상세의 결제·환불·최종결제 금액이 어긋났습니다.
+                산식을 <em>실결제 기준</em>으로 다시 잡고, 과입금 취소수수료 면제와 전표 출력 시 환불 제외를 반영했습니다.</li>
+              <li><strong>전용 컴포넌트·유틸 분리</strong> — 상품 예약용 캘린더를 재사용하지 않고 변경 전용 캘린더를 새로 만들고,
+                정책·바우처·캘린더 그리드·목업 힌트를 유틸로 나눠 개발계에서만 목업이 도는 플래그를 뒀습니다.
+                변경 처리 중·완료 시 바우처 발급 안내를 넣고, 특정 날짜 이전 예약은 버튼 자체를 숨겼습니다.</li>
+            </ul>
+          </dd>
+          <dt>규모</dt>
+          <dd>전용 컴포넌트 4종 + 유틸 <span class="num">8</span>종. 작업 계획서 <span class="num">964</span>줄 · FE 스펙 <span class="num">449</span>줄.</dd>
+        </dl>
+      </article>
+
+      <!-- 12 -->
+      <article class="deep">
+        <div class="deep-head">
+          <span class="repo">프리비아 투어&amp;티켓 예약·결제 · Nuxt 2 / Vue 2</span>
+          <h3><span class="idx">12</span>현대카드 결제 수단 · 선할인 정책 구현</h3>
+        </div>
+        <dl>
+          <dt>배경</dt>
+          <dd>
+            프리비아는 현대카드 계열 서비스라 <strong>카드 상품별 바우처 결제</strong>와 <strong>카드 조건부 선할인</strong>이 결제 로직의 큰 축입니다.
+            카드 상품이 새로 나올 때마다 결제 수단이 늘고, 할인 노출 조건은 마케팅 정책에 따라 계속 바뀝니다.
+          </dd>
+          <dt>구현</dt>
+          <dd>
+            <ul>
+              <li><strong>바우처 결제 수단 추가</strong> — the Orange, the Green Edition4, Pink Edition3를 순차 반영했습니다.
+                PC/MO 팝업, 결제 코드, 유의사항 문구, 조회 중 로딩 상태를 각각 붙이고,
+                바우처 조회에서 나던 CORS는 동일 오리진 요청으로 우회했습니다.
+                카드 상품이 늘면서 바우처명 표기가 화면마다 달라져,
+                <em>카드 종류·카드 상품 코드 기준</em>으로 표기를 한 곳에서 통일했습니다.</li>
+              <li><strong>선할인 노출 조건 정비</strong> — 종료된 선할인을 제거하고 현대카드 5% 선할인만 남기되,
+                할인율과 무관하게 라벨은 항상 보이도록 PC·MO 동작을 맞췄습니다.
+                고객 식별자가 없을 때 선할인 항목을 <em>강제로 만들어 내던</em> 로직을 제거해
+                실제로는 못 받는 할인이 표시되던 문제를 잡았습니다.</li>
+              <li><strong>M포인트 청구할인 분리</strong> — 혜택카드 조건에 묶여 있던 M포인트 청구할인 노출을 떼어내
+                혜택카드가 아니어도 조건에 맞으면 보이도록 했습니다.</li>
+              <li><strong>마케팅 수신동의</strong> — 결제 단계 약관에 마케팅 수신동의를 추가하고 전체동의 대상에 포함시켰습니다.
+                동의 값 전달 API까지 함께 붙였습니다.</li>
+              <li>비로그인 상태에서 상품·장바구니가 없는데 결제 컴포넌트가 먼저 렌더되며 터지던 문제에
+                가드를 넣어 둘 다 준비됐을 때만 렌더하도록 했습니다.</li>
+            </ul>
+          </dd>
+          <dt>규모</dt>
+          <dd>바우처 결제 팝업 PC/MO 각 <span class="num">10</span>종 이상 운영 · 결제 모델·화면 3종 지속 수정.</dd>
+        </dl>
+      </article>
+
+      <!-- 13 -->
+      <article class="deep">
+        <div class="deep-head">
+          <span class="repo">프리비아 투어&amp;티켓 · Next.js + Nuxt 2</span>
+          <h3><span class="idx">13</span>상품 검색 Extended API 마이그레이션 · 퀵서치 정비</h3>
+        </div>
+        <dl>
+          <dt>배경</dt>
+          <dd>
+            <strong>결과 내 재검색</strong>을 지원하려면 검색 조건을 평면 파라미터가 아니라 쿼리 배열로 보내야 했습니다.
+            검색 API를 신규 Extended 버전으로 갈아타는 작업인데, 호출처가 화면 곳곳에 흩어져 있어
+            <strong>먼저 전수 조사부터</strong> 했습니다.
+          </dd>
+          <dt>구현</dt>
+          <dd>
+            <ul>
+              <li><strong>마이그레이션 계획서 764줄</strong> — 프록시 구조, 호출처 10곳 전수 목록(용도·파라미터별),
+                기존 요청 바디 구조, 전환 매핑, 검증 항목을 정리한 뒤 착수했습니다.</li>
+              <li><strong>구조 전환</strong> — 평면 검색 조건을 쿼리 배열 구조로 재구성하고,
+                쿠폰·채널·커서 기반 페이징 파라미터를 반영했습니다. 검색결과·무한스크롤·필터·가격 UI를 운영 동등 수준으로 검증했습니다.</li>
+              <li><strong>레거시 제거</strong> — 이번 전환을 계기로 구예약자 화면 전체와 관련 라우트를 걷어냈습니다.
+                남겨야 할 비회원 예약 조회는 유지했습니다.</li>
+              <li><strong>퀵서치 자동완성</strong> — 외부 도메인 직접 호출로 CORS가 나던 구간을
+                동일 오리진 프록시 경로로 전환하고, 서버가 이미 정렬해 주는데 프런트에서 다시 걸던 퍼지 매칭 조건을 제거했습니다.
+                모바일 최근검색어 말줄임, 검색 상세 이동 경로 오류도 함께 정리했습니다.</li>
+              <li><strong>검색 UX 결함 정리</strong> — 모바일에서 결과가 0건이면 기타 필터 체크 상태가 사라지던 문제,
+                이용일 캘린더가 열리지 않던 렌더 오류(날짜 범위 필드 null), 검색 API 오류 시 빈 화면 대신 대체 화면 노출,
+                이용일 선택 범위 1년 제한, 투어 출발시간 새벽 구간 추가.</li>
+              <li>응답 필드가 선택적으로 빠지는 케이스(출발시간·소요시간·태그)에 방어 로직을 넣고,
+                표시 여부와 목록이 같은 계산값을 쓰도록 정리했습니다.</li>
+            </ul>
+          </dd>
+          <dt>규모</dt>
+          <dd>호출처 <span class="num">10</span>곳 전환 · 계획서 <span class="num">764</span>줄 · 구예약자 코드 전면 제거.</dd>
+        </dl>
+      </article>
+
+      <!-- 14 -->
+      <article class="deep">
+        <div class="deep-head">
+          <span class="repo">프리비아 투어&amp;티켓 · Next.js + Nuxt 2</span>
+          <h3><span class="idx">14</span>상품상세 개선 묶음 — 쿠폰 다운로드 · 옵션별 취소환불 · SEO/안정성</h3>
+        </div>
+        <dl>
+          <dt>배경</dt>
+          <dd>
+            메인 리팩토링 이후 상품상세를 붙잡고 <strong>전환에 직결되는 요소</strong>를 하나씩 올렸습니다.
+            아래 넷은 과제가 나뉘어 있지만 같은 화면을 계속 다듬은 연속 작업입니다.
+          </dd>
+          <dt>구현</dt>
+          <dd>
+            <ul>
+              <li><strong>쿠폰 다운로드</strong> — 로그인·비로그인을 나눠, 비로그인은 회원번호 0으로 발급 가능 쿠폰을 조회해
+                쿠폰 영역 자체의 노출 여부를 결정합니다. 쿠폰받기·쿠폰보기 모달을 분리하고 모바일은 바텀시트로,
+                자동 다운로드 플로우도 붙였습니다.
+                <em>시스템 알럿이 모달과 충돌</em>해 레이아웃 렌더와 모달 오픈이 아예 막히던 문제를 알럿 지연으로 풀고,
+                이중 모달 포커스 순서와 다이얼로그 레이어 순서를 정리했습니다. 발급일 기준 기간 제한 케이스도 추가했습니다.</li>
+              <li><strong>옵션별 취소·환불</strong> — 상품상세(Next)와 예약·결제(Nuxt) 양쪽에 함께 적용했습니다.
+                조건부 취소 규정에서 <em>수수료율이 같은 옵션끼리 묶고</em> 다른 정책은 구분해 보여 주며,
+                선택 옵션이 2개 이상이면서 서로 정책이 다를 때만 옵션 목록을 노출하도록 조건을 좁혔습니다.
+                공급사 직접 취소 규정 UI는 포팅 문서(201줄)로 정리해 두 레포에 같은 기준으로 반영했습니다.</li>
+              <li><strong>USJ 포함/선택 어트랙션 확인</strong> — 투어비스에서 만든 기능을 프리비아에 이식하며
+                구현 흐름·컴포넌트·상태·주의사항을 가이드 문서(1,747줄)로 남겨 뒀습니다.</li>
+              <li><strong>SEO·성능·안정성</strong> — 판매중단·매진·종료 상품에 검색 색인 제외를 적용하고,
+                상품 메타 타이틀은 운영이 지정한 값을 우선하며 브랜드명 중복을 뺐습니다.
+                JSON-LD에 FAQ·평점 데이터를 추가하고, 이미지는 리사이저 파라미터로 PC 쪽을 최적화했습니다.
+                iOS 백화 현상, 후기 탭 앵커 오동작, 코스안내 HTML 링크가 텍스트로 노출되던 문제를 잡고,
+                Sentry에 무시 규칙·차단 URL 필터를 걸어 노이즈를 줄였습니다.</li>
+              <li><strong>운영 공통</strong> — 통합 도메인 전환, 백엔드 API 통신 로그 표준 포맷 적용과
+                요청 식별자를 백엔드까지 전파(프런트 자체 생성 제거)를 투어비스와 같은 기준으로 맞췄습니다.</li>
+            </ul>
+          </dd>
+          <dt>규모</dt>
+          <dd>프리비아 투어&amp;티켓 두 코드베이스(Next.js · Nuxt 2)에 걸쳐
+            커밋 <span class="num">569</span>건(2022-02 ~ 2026-08).</dd>
+        </dl>
+      </article>
+
+      <!-- 15 -->
+      <article class="deep">
+        <div class="deep-head">
+          <span class="repo">마케팅 메시지 템플릿 · 단독 구축</span>
+          <h3><span class="idx">15</span>Braze 커스텀 인앱·인웹 메시지 템플릿 시스템 구축</h3>
+        </div>
+        <dl>
+          <dt>배경</dt>
+          <dd>
+            <a href="https://www.braze.com/ko" style="color:var(--accent)">Braze</a>는 고객 참여·마케팅 자동화 플랫폼으로,
+            앱·웹 화면 위에 <strong>인앱 / 인웹 메시지</strong>를 띄웁니다. 기본 제공 템플릿은 브랜드 톤과 배치 규칙을 맞출 수 없어
+            <strong>Custom HTML 메시지</strong>로 직접 만들어야 했습니다.
+            <br>Custom HTML 메시지는 Braze가 만든 <code>iframe</code> 안에서 실행되는 <em>독립 문서</em>입니다.
+            외부 CSS·JS를 참조할 수 없어 한 파일에 전부 인라인되어야 하고, 클릭 성과 집계와 닫기는
+            Braze 브릿지 API를 통해서만 가능하며, iframe의 크기·위치는 <strong>자식 문서가 부모를 거꾸로 제어</strong>해야 합니다.
+            이 제약 위에서 브랜드 두 개 × 메시지 유형 네 개 × 노출 상황 두 개를 감당할 구조가 필요했습니다.
+          </dd>
+          <dt>구현</dt>
+          <dd>
+            <ul>
+              <li><strong>템플릿 빌드 파이프라인을 직접 구성</strong>했습니다 — Nunjucks + Gulp 5 + SCSS.
+                레이아웃 · 컴포넌트 · 스크립트 · 스타일을 각각 부분 템플릿으로 쪼개고,
+                브랜드·유형·상황 조합마다 필요한 조각만 조립해 <em>자체 완결 단일 HTML</em>로 뽑아냅니다.
+                Braze 대시보드에 붙여넣을 때 외부 참조가 하나도 없어야 하므로 CSS·JS를 전부 인라인합니다.</li>
+              <li><strong>부모 iframe 제어</strong> — Braze가 생성한 메시지 iframe을 자식 문서에서 최상위 window로 거슬러 잡아
+                뷰포트별로 재배치합니다. 750px 미만은 전체 화면 고정, 이상은 브랜드별 우측 하단 오프셋
+                (투어비스 318px / 프리비아 395px)으로 다르게 앉힙니다.
+                콘텐츠 실제 높이를 측정해 iframe 높이를 맞추고, 그 값을 CSS 변수로 <em>부모 문서에 되돌려</em>
+                기존 스낵바·플로팅 요소와 겹치지 않게 했습니다.</li>
+              <li><strong>대시보드 프리뷰 대응</strong> — 마케터가 Braze 대시보드에서 미리 볼 때는 부모 문서 접근이 막힙니다.
+                cross-origin 접근 시 예외가 나는 성질을 이용해 대시보드 환경을 판별하고,
+                그때는 자기 자신을 루트로 삼도록 폴백을 뒀습니다. 로컬 파일 프로토콜에서도 같은 경로를 탑니다.
+                <em>제작자가 대시보드에 올리기 전에 로컬에서 그대로 확인할 수 있는 것</em>이 이 구조의 핵심 이점입니다.</li>
+              <li><strong>초기 깜빡임 제거</strong> — 레이아웃 계산 전에 노출돼 메시지가 튀는 문제를,
+                초기 투명 처리 후 아이콘 이미지 프리로드 완료 → 크기 계산 → 클래스 부여 → 페이드인 순서로 잡았습니다.</li>
+              <li><strong>Braze 기본 동작 오버라이드</strong> — Braze는 메시지 표시 중 본문 스크롤을 잠급니다.
+                배너·스낵바형은 스크롤이 되어야 하므로 해당 클래스를 걷어내고,
+                루트 클래스도 커스텀 애니메이션 세트로 갈아끼웠습니다.</li>
+              <li><strong>브릿지 연동</strong> — 브릿지 준비 이벤트에서 <code>data-button-id</code>가 붙은 요소에 핸들러를 걸어
+                클릭을 Braze에 기록(성과 집계)하고, 퇴장 애니메이션 300ms 뒤에 메시지를 닫습니다.
+                일반형과 모달형은 애니메이션 시퀀스가 달라 스크립트를 분리했습니다.</li>
+              <li><strong>노출 제외 규칙</strong> — 프로모션·기획전 페이지 위에 메시지가 겹치면 안 돼서,
+                브랜드별 URL 키워드 차단 목록으로 해당 경로에서는 렌더를 건너뛰고 스크롤 잠금도 되돌립니다.</li>
+              <li><strong>iOS 대응</strong> — <code>vh</code> 단위가 iOS 주소창에 따라 튀는 문제를
+                실제 뷰포트 높이를 CSS 커스텀 프로퍼티로 주입해 해결했습니다.</li>
+              <li><strong>운영 편의</strong> — 템플릿 목록을 JSON으로 관리해 인덱스 페이지를 자동 생성합니다.
+                브랜드 · 유형 · 상황별로 정리된 표에서 완료/수정중/대기 상태와 미리보기 링크를 한눈에 보고,
+                마케터·기획자가 링크만으로 확인할 수 있습니다. 배포는 산출물 묶음으로 전달합니다.</li>
+            </ul>
+          </dd>
+          <dt>규모</dt>
+          <dd>
+            산출 템플릿 <span class="num">17</span>종 — 투어비스 <span class="num">10</span> · 프리비아 <span class="num">7</span>.
+            유형은 메시지형 · 메시지+버튼형 · 배너/범용형 · 모달형(+이미지 변형), 노출 상황은 상품상세 · 예약완료.
+            <strong>기획·퍼블리싱·스크립트·빌드 환경까지 단독으로 구축·운영</strong>했습니다(레포 단독 작성자).
+          </dd>
+        </dl>
+      </article>
+
+      <!-- 16 -->
+      <article class="deep">
+        <div class="deep-head">
+          <span class="repo">프리비아 해외패키지</span>
+          <h3><span class="idx">16</span>프리비아 해외패키지 프로젝트 구축 — SC / BLC / UI 3계층 컴포넌트 아키텍처</h3>
+        </div>
+        <dl>
+          <dt>배경</dt>
+          <dd>
+            프리비아 해외패키지를 Next.js App Router로 신규 구축하는 프로젝트에
+            <strong>초기 구조 설계 단계부터</strong> 참여했습니다.
+            App Router에서는 서버 컴포넌트와 클라이언트 컴포넌트가 한 트리에 섞이는데,
+            규칙 없이 만들면 <code>'use client'</code>가 위쪽으로 번져 서버 렌더링 이점이 사라지고
+            같은 UI가 서비스마다 중복 구현됩니다. 그래서 <strong>컴포넌트의 역할을 이름으로 강제하는 규칙</strong>을 먼저 세웠습니다.
+          </dd>
+          <dt>구현</dt>
+          <dd>
+            <ul>
+              <li>
+                <strong>3계층 분리 — 이 프로젝트의 핵심 특징입니다.</strong>
+                <ul style="margin-top:7px">
+                  <li><strong>SC (Server Component)</strong> — <code>async</code> 서버 컴포넌트.
+                    <em>데이터 패치만</em> 담당하고 재검증 주기를 선언합니다.
+                    패치 함수는 <code>*.fetch.ts</code>로 같은 폴더에 붙여 두어, 이 화면이 무슨 API를 쓰는지 파일만 봐도 드러납니다.</li>
+                  <li><strong>BLC (Business Logic Component)</strong> — <code>'use client'</code> 경계.
+                    SC가 넘긴 초기 데이터를 상태로 받아 <em>사용자 상호작용과 도메인 로직</em>을 담당합니다.
+                    추가 조회는 <code>*.action.ts</code> 서버 액션으로, 복잡한 로직은 <code>use*BLC.ts</code> 훅으로 다시 분리합니다.</li>
+                  <li><strong>UI 컴포넌트</strong> — <em>상태도 패치도 없는 순수 프레젠테이션</em>.
+                    공용 디자인 시스템 패키지에 두고 props로만 제어합니다.</li>
+                </ul>
+                <span style="display:block;margin-top:7px">
+                  덕분에 <code>'use client'</code> 경계가 <strong>BLC 한 겹에서 멈추고</strong>,
+                  UI는 어느 서비스에서든 재사용되며, 서버 데이터 흐름이 SC에 모입니다.
+                  파일명만 봐도 그 컴포넌트가 무엇을 해도 되고 무엇을 하면 안 되는지 알 수 있는 게 이 규칙의 목적이었습니다.
+                </span>
+              </li>
+              <li><strong>공용 디자인 시스템으로 승격</strong> — 서비스마다 따로 만들던 메인 화면 컴포넌트
+                (FAQ · 공지 · 상품 아이템/슬라이더/탭 · 프로모션 · 상단 슬라이더 등)를 공용 UI 패키지로 올리고
+                호텔 쪽 중복 구현을 걷어냈습니다. 현재 이 패키지는 <strong>패키지·투티·호텔·항공·공통 5개 앱이 함께</strong> 씁니다.
+                PC 55종 · MO 56종 규모이고, <strong>Storybook 스토리 109개</strong>로 상태별 렌더를 문서화했습니다.</li>
+              <li><strong>Lit 기반 웹 컴포넌트 퀵서치</strong> — 패키지 검색창을 다른 서비스에서도 써야 해서,
+                React 트리 밖에서 동작하는 <em>웹 컴포넌트</em>로 따로 빌드했습니다.
+                Rollup으로 단일 번들을 만들어 정적 스크립트로 복사하는 빌드 단계를 두어,
+                <strong>React를 쓰지 않는 페이지에도 스크립트 태그 하나로 삽입</strong>됩니다.
+                최근 검색·키워드 추천·출발일 캘린더 필터·검색 조건 리스트를 각각 커스텀 엘리먼트로 나눴습니다.</li>
+              <li><strong>헤더·검색 UX</strong> — 전역 헤더/서브 헤더 sticky 처리와 스크롤 시 화면이 흔들리던 문제를 잡고,
+                sticky 상태에서 스크롤이 발생하면 퀵서치가 축소형으로 접히며 열려 있던 패널도 함께 닫히도록 했습니다
+                (스크롤 핸들러는 throttle, 헤더 노출 판정은 intersection observer).</li>
+              <li><strong>홈쇼핑 방영 섹션</strong> — 방영 시간 카운트다운을 커스텀 훅으로 빼 반복 코드를 정리하고,
+                PC/MO 슬라이더·아이템을 공용 컴포넌트로 만들었습니다.
+                API에 대체 텍스트가 없어 홈쇼핑사 로고는 파일명으로 판별해 <code>alt</code>를 채웠습니다(접근성).</li>
+              <li><strong>메인 전시·인벤토리</strong> — 운영이 지정한 노출 순서 값 기준으로 인벤토리 정렬 구조를 바꾸고,
+                전시 팝업에 「오늘 하루 보지 않기」(로컬 스토리지)를 붙였습니다.
+                베스트셀러 배지, 플로팅 배너, 챗봇 진입을 API 연동으로 처리했습니다.</li>
+              <li><strong>공통 설정 통합</strong> — CORS를 우회하려고 서비스마다 만들어 두었던 API 라우터를
+                외부 설정 파일 직접 호출로 정리해 삭제하고, 공통 설정 인터페이스만 남겼습니다.</li>
+              <li><strong>모바일 디테일</strong> — 다이얼로그·액션시트 높이 단위를 <code>vh</code>에서 <code>dvh</code>로 옮기고
+                주소창 변화를 반영하는 커스텀 프로퍼티를 훅으로 주입했습니다.
+                상품상세는 하단 고정 버튼 때문에 푸터 여백을 따로 뒀습니다.</li>
+            </ul>
+          </dd>
+          <dt>규모</dt>
+          <dd>
+            소스 파일 <span class="num">1,200</span>여 개 · 본인 커밋 <span class="num">151</span>건(2024-07 ~ 2026-08).
+            공용 UI 패키지 컴포넌트 <span class="num">111</span>종 · Storybook 스토리 <span class="num">109</span>개.
+            <strong>프로젝트 초기 구조 설계와 공통 컴포넌트 체계를 맡은 포지션</strong>이었습니다.
+          </dd>
+        </dl>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ═══ 담당 서비스 ═══ -->
+  <section>
+    <div class="sec-head">
+      <span class="mark">06 / Scope</span>
+      <h2>담당 서비스 범위</h2>
+    </div>
+    <p class="lede">
+      4년 7개월간 담당해 온 서비스와 도메인입니다.
+    </p>
+
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr><th>서비스</th><th>성격</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="cat">프리비아 (PRIVIA)</td><td class="items">현대카드 계열 여행 플랫폼 — 항공·숙소·패키지·투어&amp;티켓 전 영역</td></tr>
+          <tr><td class="cat">투어비스 (TOURVIS)</td><td class="items">타이드스퀘어 자사 여행 브랜드 — 투어&amp;티켓·호텔·패키지</td></tr>
+          <tr><td class="cat">투어&amp;티켓 (투티)</td><td class="items">액티비티·입장권 커머스. 최근 3년 주력 도메인</td></tr>
+          <tr><td class="cat">국내·해외 숙소</td><td class="items">호텔 상세, 리뷰, 객실 상세, 숙박세일페스타 전시</td></tr>
+          <tr><td class="cat">해외패키지</td><td class="items">프리비아 패키지 신규 구축 — PC/MO 메인·검색·상품상세·예약, 공용 디자인 시스템, 웹 컴포넌트 퀵서치, 견적 페이지</td></tr>
+          <tr><td class="cat">제휴 채널</td><td class="items">네이버여행, 지마켓, 구글 TTD, 스마트스토어, GYG, 트립닷컴, 아폴로</td></tr>
+          <tr><td class="cat">B2B · 복지몰</td><td class="items">BTMS(출장 관리), 베네피아, 휴가샵, 현대이지웰, 투어비스비즈</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ═══ 경력기술서 요약 ═══ -->
+  <section>
+    <div class="sec-head">
+      <span class="mark">07 / Copy</span>
+      <h2>경력기술서 요약</h2>
+    </div>
+    <p class="lede">
+      위 내용을 회사 항목 아래에 들어가는 형태로 압축한 것입니다.
+    </p>
+
+    <div class="copyblock">
+      <span class="tag">타이드스퀘어 · FE개발1팀 · 2022.01 – 재직 중</span>
+      <p style="margin-bottom:10px"><strong>여행 커머스 프론트엔드 개발 / 투어비스 · 프리비아</strong></p>
+      <ul style="margin:0; padding-left:20px; color:var(--ink-2)">
+        <li>Next.js·TypeScript·pnpm 모노레포(앱 6개) 환경에서 투어&amp;티켓 상품상세·옵션선택 플로우를 PC/MO 전면 재구축</li>
+        <li>유니버설 스튜디오 재팬 패스 상품군(파일 132개·약 31,700줄) 전담 — 전용 옵션 선택 페이지, 아이 키·어트랙션·권종 조건 기반 패스 추천 필터와 일치도 정렬, 표기 흔들림을 흡수하는 어트랙션·에어리어 매핑, 다이나믹 프라이싱 분기</li>
+        <li>그룹상품 인페이지 예약 구축 — 상품 ID별 Redux 브랜치로 단일 상품 옵션 상태와 격리하면서 동일 컴포넌트·예약 payload 재사용, 상품 API 캐시로 옵션 카드 레이어 4종의 중복 호출 제거</li>
+        <li>일본 버스투어 매진일 대체상품 추천 설계·구현 — 매진일 선택 허용 캘린더, 옵션 재고 기반 분기, 후보 다건 조회 캐시와 페인트 전 동기화로 레이아웃 시프트 제거</li>
+        <li>취소·환불 규정 V2 도입 — 옵션별 정책 그룹핑·수수료 오름차순 정렬·기준시점 표기 정합을 상품상세부터 예약·결제·주문·취소 전 구간에 적용, V1 폴백 유지</li>
+        <li>네이버여행 비회원 예약 동선 신규 구축 — 알림톡 진입 예약정보 입력 페이지(Server Action·동의 모달·어댑터 단위 테스트)와 토큰 기반 예약상세 페이지(파일 32개·4,533줄)</li>
+        <li>글로벌(EN) 서비스 구축 — PRD·설계 문서 작성 후 영어 전용 라우트 16개와 게스트 예약 플로우 구현, PayPal(USD) 주문 생성·서버 캡처 연동 및 결제 에러 분기 정리</li>
+        <li>정적 프로모션 번들 로더 구축 — 번들 규격 문서화, 에셋 경로 재작성·메타 기반 SEO/OG/JSON-LD 자동 구성으로 React 변환 없이 프로모션 9건 운영</li>
+        <li>프리비아 투어&amp;티켓 메인 PC/MO 전면 리팩토링 — 레거시 스택을 Next.js App Router·Tailwind·Radix 기반으로 재구축(퀵서치·전시 인벤토리·오마카세 개인화·배너 체계·GA 정합)</li>
+        <li>프리비아 투티 이용후기·포토이용후기 섹션 신규 구축 — 분석·구축 계획 문서 선행 작성 후 서버 컴포넌트·커스텀 훅 분리 구조로 구현, 도움됨·번역·JSON-LD 평점 연동</li>
+        <li>예약상세 이용일 변경(다이나믹 프라이싱) 구현 — 964줄 작업 계획서 작성 후 공급사 연동 8단계 비동기 플로우, 차액 부호별 결제·환불 분기, 상태 폴링·재진입 병합, 금액 산식 실결제 기준 보정</li>
+        <li>현대카드 바우처 결제수단 및 선할인·M포인트 청구할인 노출 정책 구현(Nuxt 2/Vue 2 예약·결제 영역)</li>
+        <li>상품 검색 Extended API 마이그레이션 — 호출처 10곳 전수 조사 후 쿼리 배열 구조로 전환, 퀵서치 자동완성 동일 오리진 프록시화 및 구예약자 레거시 제거</li>
+        <li>Braze 커스텀 인앱·인웹 메시지 템플릿 17종 단독 구축 — Nunjucks·Gulp·SCSS 빌드 파이프라인 설계, 부모 iframe 크기·위치 제어와 대시보드 프리뷰 폴백, 브릿지 API 클릭 성과 집계 연동(투어비스·프리비아 공통 자산)</li>
+        <li>프리비아 해외패키지 신규 프로젝트 초기 구조 설계 — App Router에서 <strong>서버 컴포넌트(SC) / 비즈니스 로직 컴포넌트(BLC) / 순수 UI</strong> 3계층 컨벤션을 정의해 클라이언트 경계를 한 겹으로 고정하고 데이터 흐름을 서버로 수렴</li>
+        <li>사내 공용 디자인 시스템 패키지 구축 — 서비스별 중복 컴포넌트를 공통 UI 패키지(PC 55·MO 56종)로 승격해 5개 앱이 공유, Storybook 스토리 109개로 문서화</li>
+        <li>Lit + Rollup 기반 웹 컴포넌트 퀵서치 개발 — React 트리 밖에서 동작하도록 단일 번들로 빌드해 타 서비스에 스크립트 태그만으로 삽입 가능하게 구현</li>
+        <li>SEO 개선(canonical·H1·noindex·사이트맵) 및 상품상세 LCP 최적화로 검색 유입·렌더링 성능 개선</li>
+        <li><code>server-only</code> 위반·환경변수 중복 리팩토링, API 요청 로그 포맷 규격화로 운영 안정성 확보</li>
+        <li>4년 7개월간 투어비스·프리비아 두 브랜드의 프론트엔드를 담당, 주력 리포지토리 커밋 1,520건</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    조지원 · 프론트엔드 엔지니어 · 타이드스퀘어 2022.01 – 재직 중<br>
+    외부 제출용 문서입니다. 사내 이슈 키·저장소 경로 등 내부 식별 정보는 제외했습니다. 작성일 2026-08-24.
+  </footer>
+
+</div>
+
+</body>
+</html>

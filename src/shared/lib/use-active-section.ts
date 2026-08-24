@@ -2,11 +2,14 @@
 
 import { useEffect, useState } from 'react';
 
+/** 헤더(h-16)와 scroll-mt-20 / scroll-padding-top(5rem)에 맞춘 스파이 라인 */
+const HEADER_OFFSET = 80;
+
 /**
- * 현재 뷰포트 상단에 걸린 섹션 id 를 돌려준다. GNB 하이라이트용.
- * IntersectionObserver 콜백에서만 setState 하므로 렌더 중 상태 갱신이 없다.
+ * 뷰포트 상단(헤더 아래)을 가로지른 마지막 섹션 id.
+ * IntersectionObserver 대신 스크롤 좌표로 판정해, 긴 섹션·점프 스크롤에서도 메뉴가 어긋나지 않게 한다.
  */
-export function useActiveSection(sectionIds: readonly string[], offset = 96) {
+export function useActiveSection(sectionIds: readonly string[], offset = HEADER_OFFSET) {
   const [activeId, setActiveId] = useState<string>(sectionIds[0] ?? '');
 
   useEffect(() => {
@@ -16,24 +19,48 @@ export function useActiveSection(sectionIds: readonly string[], offset = 96) {
 
     if (elements.length === 0) return;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+    const resolveActiveId = () => {
+      const atBottom =
+        window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+      if (atBottom) return elements[elements.length - 1].id;
 
-        if (visible[0]) {
-          setActiveId(visible[0].target.id);
+      let current = elements[0].id;
+      for (const element of elements) {
+        if (element.getBoundingClientRect().top <= offset + 1) {
+          current = element.id;
         }
-      },
-      {
-        rootMargin: `-${offset}px 0px -55% 0px`,
-        threshold: [0, 0.25, 0.5],
-      },
-    );
+      }
+      return current;
+    };
 
-    elements.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
+    let frame = 0;
+    const update = () => {
+      const next = resolveActiveId();
+      setActiveId((prev) => (prev === next ? prev : next));
+    };
+
+    const onScrollOrResize = () => {
+      if (frame) cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        update();
+      });
+    };
+
+    frame = requestAnimationFrame(() => {
+      frame = 0;
+      update();
+    });
+    window.addEventListener('scroll', onScrollOrResize, { passive: true });
+    window.addEventListener('resize', onScrollOrResize);
+    window.addEventListener('hashchange', onScrollOrResize);
+
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener('scroll', onScrollOrResize);
+      window.removeEventListener('resize', onScrollOrResize);
+      window.removeEventListener('hashchange', onScrollOrResize);
+    };
   }, [sectionIds, offset]);
 
   return activeId;

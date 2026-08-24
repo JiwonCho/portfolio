@@ -1,1 +1,1 @@
-export { siteConfig, socialLinks, navItems, sectionIds } from './site';
+export { siteConfig, socialLinks, documentLinks, navItems, sectionIds } from './site';

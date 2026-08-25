@@ -88,9 +88,17 @@ export function HeroSection() {
 
           <h1 className="flex flex-col gap-1 text-4xl font-bold leading-[1.15] tracking-tight sm:text-6xl lg:text-7xl">
             <TextReveal text={profile.headline[0]} delay={0.35} />
-            <span className="bg-gradient-to-r from-hero-accent via-hero-foreground to-hero-accent bg-clip-text text-transparent">
-              <TextReveal text={`${profile.headline[1]} ${profile.name}`} delay={0.6} />
-            </span>
+            {/*
+              배경 그라디언트 + bg-clip-text 를 쓰지 않는다.
+              글자를 그리는 건 transform 이 걸린 자식 span 들이라,
+              iOS Safari 에서 합성 레이어가 된 자손에는 클립된 배경이 칠해지지 않는다
+              (= 글자가 통째로 투명해진다). 단색 토큰으로 칠한다.
+            */}
+            <TextReveal
+              text={`${profile.headline[1]} ${profile.name}`}
+              delay={0.6}
+              className="text-hero-accent"
+            />
           </h1>
         </div>
 

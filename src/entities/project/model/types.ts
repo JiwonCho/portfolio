@@ -17,6 +17,7 @@ export const PROJECT_BRANDS = [
   { id: 'privia-tnt', label: '프리비아 투티' },
   { id: 'privia-package', label: '해외패키지' },
   { id: 'marketing', label: '마케팅 메시지' },
+  { id: 'tooling', label: '도구 · 자동화' },
 ] as const;
 
 export type ProjectBrandId = (typeof PROJECT_BRANDS)[number]['id'];
@@ -30,6 +31,13 @@ export interface ProjectSection {
 export interface ProjectMetric {
   value: string;
   label: string;
+}
+
+export interface ProjectLink {
+  label: string;
+  href: string;
+  /** live = 배포된 서비스, repo = 소스 저장소 */
+  type: 'live' | 'repo';
 }
 
 export interface ProjectImage {
@@ -66,4 +74,6 @@ export interface Project {
   thumbnail?: string;
   /** 상세 페이지 갤러리. 없으면 갤러리 섹션 자체가 렌더되지 않는다 */
   gallery?: ProjectImage[];
+  /** 공개된 데모·저장소 링크. 사내 프로젝트는 비워 둔다 */
+  links?: ProjectLink[];
 }

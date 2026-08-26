@@ -1,9 +1,10 @@
 import Link from 'next/link';
-import { ArrowLeft, GitBranch } from 'lucide-react';
+import { ArrowLeft, ExternalLink, GitBranch } from 'lucide-react';
 
 import { PROJECT_BRANDS, PROJECT_CATEGORIES, type Project } from '@/entities/project';
 import { ProjectGallery } from '@/features/preview-project-image';
 import { Badge } from '@/shared/ui/badge';
+import { GithubIcon } from '@/shared/ui/brand-icons';
 import { Button } from '@/shared/ui/button';
 import { Card, CardContent } from '@/shared/ui/card';
 import { Separator } from '@/shared/ui/separator';
@@ -56,6 +57,19 @@ export function ProjectDetailPage({ project }: { project: Project }) {
           </span>
         </div>
       </header>
+
+      {project.links?.length ? (
+        <div className="mt-6 flex flex-wrap gap-2">
+          {project.links.map((link) => (
+            <Button key={link.href} variant="outline" size="sm" asChild>
+              <a href={link.href} target="_blank" rel="noreferrer noopener">
+                {link.type === 'repo' ? <GithubIcon /> : <ExternalLink aria-hidden />}
+                {link.label}
+              </a>
+            </Button>
+          ))}
+        </div>
+      ) : null}
 
       <Separator className="my-10" />
 

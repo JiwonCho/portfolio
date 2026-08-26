@@ -7,6 +7,7 @@ export {
   type ProjectBrandId,
   type ProjectCategoryId,
   type ProjectImage,
+  type ProjectLink,
   type ProjectMetric,
   type ProjectSection,
   type ProjectTag,

@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ArrowUpRight, GitBranch } from 'lucide-react';
+import { ArrowUpRight, ExternalLink, GitBranch } from 'lucide-react';
 
 import { Badge } from '@/shared/ui/badge';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/shared/ui/card';
@@ -87,6 +87,9 @@ export function ProjectCard({ project, className }: { project: Project; classNam
           <span className="inline-flex items-center gap-1.5 font-mono">
             <GitBranch className="size-3.5" aria-hidden />
             {project.repo}
+            {project.links?.some((link) => link.type === 'live') ? (
+              <ExternalLink className="size-3.5 text-primary" aria-label="공개 데모 있음" />
+            ) : null}
           </span>
           <ArrowUpRight
             className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"

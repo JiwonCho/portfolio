@@ -16,7 +16,7 @@ export function ProjectsSection() {
       <div className="flex flex-col gap-10">
         <SectionHeader
           eyebrow="Projects"
-          title="실제 소스와 설계 문서를 다시 읽어 정리한 16건"
+          title="실제 소스와 설계 문서를 다시 읽어 정리한 18건"
           description="티켓 제목이 아니라 레포의 소스·주석·계획서를 기준으로 적었습니다. 각 카드의 수치는 파일명·경로 패턴으로 센 레포 집계값이라, 규모감으로만 읽어 주세요. 카드를 누르면 배경 → 구현 → 규모 → 파일 경로 순으로 상세를 볼 수 있습니다."
         />
 
